@@ -8,6 +8,8 @@ import java.awt.Toolkit;
 import java.awt.FlowLayout;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JRadioButton;
@@ -50,6 +52,8 @@ public class booking extends JFrame {
     private JTextField textGoDate;
     private JButton ticketBtn;
     private JLabel labelName;
+    private JLabel labelGate;
+    private JTextField textSeat;
 
     public booking() {
         setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\Downloads\\8-removebg-preview (2).png"));
@@ -62,7 +66,7 @@ public class booking extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JButton backBtn = new JButton("back");
+        JButton backBtn = new JButton("Back");
         backBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
         backBtn.setBackground(Color.LIGHT_GRAY);
         backBtn.setBounds(154, 617, 96, 23);
@@ -118,9 +122,10 @@ public class booking extends JFrame {
         logo1.setBounds(0, 1, 257, 106);
         panel1.add(logo1);
 
-        JLabel lblNewLabel_1 = new JLabel("Jenis Tiket");
+        JLabel lblNewLabel_1 = new JLabel("Type Of Ticket");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-        lblNewLabel_1.setBounds(139, 153, 124, 31);
+        lblNewLabel_1.setBounds(35, 153, 340, 31);
         contentPane.add(lblNewLabel_1);
 
         JLabel lblNewLabel_2 = new JLabel("--------------------------------------------------------------------");
@@ -128,7 +133,7 @@ public class booking extends JFrame {
         lblNewLabel_2.setBounds(35, 181, 373, 14);
         contentPane.add(lblNewLabel_2);
 
-        JLabel lblNewLabel_3 = new JLabel("Kelas");
+        JLabel lblNewLabel_3 = new JLabel("Class");
         lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 15));
         lblNewLabel_3.setBounds(60, 202, 59, 23);
         contentPane.add(lblNewLabel_3);
@@ -158,9 +163,9 @@ public class booking extends JFrame {
 
         });
 
-        JLabel lblNewLabel_5 = new JLabel("Kategori");
+        JLabel lblNewLabel_5 = new JLabel("Category");
         lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 15));
-        lblNewLabel_5.setBounds(245, 204, 72, 19);
+        lblNewLabel_5.setBounds(222, 204, 72, 19);
         contentPane.add(lblNewLabel_5);
 
         JRadioButton economy = new JRadioButton("Economy");
@@ -199,7 +204,7 @@ public class booking extends JFrame {
 
         JComboBox from = new JComboBox();
         from.setBackground(Color.ORANGE);
-        from.setModel(new DefaultComboBoxModel(new String[] {"Destination", "KLIA"}));
+        from.setModel(new DefaultComboBoxModel(new String[] {"Destination", "KLIA","Krabi,Thailand","Singapore","Seoul,South Korea","Jakarta,Indonesia","Bali,Indonesia","Tokyo,Japan","Ghuangzhou,China"}));
         from.setBounds(132, 332, 202, 22);
         contentPane.add(from);
 
@@ -213,26 +218,18 @@ public class booking extends JFrame {
         contentPane.add(totalField);
         totalField.setColumns(10);
 
-        JLabel totalLabel = new JLabel("Harga");
+        JLabel totalLabel = new JLabel("Price :");
         totalLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
         totalLabel.setBounds(60, 571, 84, 14);
         contentPane.add(totalLabel);
 
-        JButton totalBtn = new JButton("Kira\r\n");
-        totalBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+        JButton totalBtn = new JButton("Total");
         totalBtn.setBackground(Color.LIGHT_GRAY);
         totalBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
         totalBtn.setBounds(286, 617, 89, 23);
         contentPane.add(totalBtn);
 
-        JButton resetBtn = new JButton("Semula");
-        resetBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+        JButton resetBtn = new JButton("Reset");
         resetBtn.setBackground(Color.LIGHT_GRAY);
         resetBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
         resetBtn.setBounds(35, 617, 89, 23);
@@ -260,6 +257,7 @@ public class booking extends JFrame {
         panel2.add(textTo);
 
         textWay = new JTextField();
+        textWay.setFont(new Font("Tahoma", Font.BOLD, 13));
         textWay.setHorizontalAlignment(SwingConstants.CENTER);
         textWay.setColumns(10);
         textWay.setBounds(638, 256, 134, 27);
@@ -322,7 +320,7 @@ public class booking extends JFrame {
 
         labelName = new JLabel("");
         labelName.setFont(new Font("Arial", Font.BOLD, 11));
-        labelName.setBounds(216, 100, 534, 26);
+        labelName.setBounds(216, 100, 358, 26);
         panel2.add(labelName);
 
         JLabel bookingTime = new JLabel("");
@@ -383,7 +381,30 @@ public class booking extends JFrame {
         lblNewLabel_11_4_1_3_1.setBounds(638, 222, 134, 27);
         panel2.add(lblNewLabel_11_4_1_3_1);
 
-        ticketBtn = new JButton("Ticket\r\n");
+        textSeat = new JTextField();
+        textSeat.setHorizontalAlignment(SwingConstants.CENTER);
+        textSeat.setFont(new Font("Tahoma", Font.BOLD, 13));
+        textSeat.setBounds(488, 379, 86, 27);
+        panel2.add(textSeat);
+        textSeat.setColumns(10);
+
+        JLabel lblNewLabel_11_4_1_2_1 = new JLabel("Seat :");
+        lblNewLabel_11_4_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+        lblNewLabel_11_4_1_2_1.setBounds(436, 379, 42, 27);
+        panel2.add(lblNewLabel_11_4_1_2_1);
+
+        JLabel lblNewLabel_12 = new JLabel("Gate :");
+        lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNewLabel_12.setBounds(660, 150, 33, 14);
+        panel2.add(lblNewLabel_12);
+
+        labelGate = new JLabel("");
+        labelGate.setHorizontalAlignment(SwingConstants.CENTER);
+        labelGate.setFont(new Font("Tahoma", Font.BOLD, 11));
+        labelGate.setBounds(697, 150, 75, 14);
+        panel2.add(labelGate);
+
+        ticketBtn = new JButton("TICKET");
         ticketBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
         ticketBtn.setBackground(Color.LIGHT_GRAY);
         ticketBtn.setBounds(1122, 613, 140, 31);
@@ -487,7 +508,9 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
 
-
+                            String className = "";
+                            String seat = "";
+                            String gate = "";
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 
@@ -497,6 +520,8 @@ public class booking extends JFrame {
                             DecimalFormat format = new DecimalFormat("#0.00");
 
                             if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) {
+
+                                className = "Business";
 
                                 totalTax = 354.3 * tax;
                                 price = (354.3 * day) + totalTax;
@@ -514,13 +539,12 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
-
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Johor Bahru")) {
+
+                                className = "Business";
 
                                 totalTax = 274.3 * tax;
                                 price = (274.3 * day) + totalTax;
@@ -538,12 +562,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 284 * tax;
                                 price = (284 * day)+totalTax;
@@ -561,12 +584,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bharu,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 264.3 * tax;
                                 price = (264.3 * day) + totalTax;
@@ -584,12 +606,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 284.3 * tax;
                                 price = (284.3 * day) +totalTax;
@@ -607,12 +628,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 394.3 * tax;
                                 price = (394.3 * day) + totalTax;
@@ -630,12 +650,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Business";
 
                                 totalTax = 264.3 * tax;
                                 price = (264.3 * day) + totalTax;
@@ -653,12 +672,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuantan,Pahang")) {
+                                className = "Business";
 
                                 totalTax = 284 * tax;
                                 price = (284 * day) + totalTax;
@@ -676,12 +694,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Seoul,South Korea")) {
+                                className = "Business";
 
                                 totalTax = 1557 * tax;
                                 price = (1557 * day) + totalTax;
@@ -699,12 +716,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Singapore")) {
+                                className = "Business";
 
                                 totalTax = 328 * tax;
                                 price = (328 * day) + totalTax;
@@ -722,12 +738,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Tokyo,Japan")) {
+                                className = "Business";
 
                                 totalTax = 1060 * tax;
                                 price = (1060 * day) + totalTax;
@@ -745,12 +760,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Krabi,Thailand")) {
+                                className = "Business";
 
                                 totalTax = 1609.1 * tax;
                                 price = (1609.1 * day) + totalTax;
@@ -768,12 +782,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Bali,Indonesia")) {
+                                className = "Business";
 
                                 totalTax = 760 * tax;
                                 price = (760 * day) + totalTax;
@@ -791,12 +804,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Jakarta,Indonesia")) {
+                                className = "Business";
 
                                 totalTax = 694 * tax;
                                 price = (694 * day) + totalTax;
@@ -814,12 +826,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Guangzhou,China")) {
+                                className = "Business";
 
                                 totalTax = 11509 * tax;
                                 price = (11509 * day) + totalTax;
@@ -837,14 +848,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //============================================================== economy / adult / oneWay =================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) {
+                                className = "Economy";
 
                                 totalTax = 194.3 * tax;
                                 price = (194.3 * day) + totalTax;
@@ -862,13 +872,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
-
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Johor Bahru")) {
+                                className = "Economy";
 
                                 totalTax = 114.3 * tax;
                                 price = (114.3 * day) + totalTax;
@@ -886,12 +894,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 124 * tax;
                                 price = (124 * day)+totalTax;
@@ -909,12 +916,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bharu,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 104.3 * tax;
                                 price = (104.3 * day) + totalTax;
@@ -932,12 +938,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 124.3 * tax;
                                 price = (124.3 * day) +totalTax;
@@ -955,12 +960,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 234.3 * tax;
                                 price = (234.3 * day) + totalTax;
@@ -978,12 +982,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 104.3 * tax;
                                 price = (104.3 * day) + totalTax;
@@ -1001,12 +1004,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuantan,Pahang")) {
+                                className = "Economy";
 
                                 totalTax = 124 * tax;
                                 price = (124 * day) + totalTax;
@@ -1024,12 +1026,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Seoul,South Korea")) {
+                                className = "Economy";
 
                                 totalTax = 1397 * tax;
                                 price = (1397 * day) + totalTax;
@@ -1047,12 +1048,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Singapore")) {
+                                className = "Economy";
 
                                 totalTax = 168 * tax;
                                 price = (168 * day) + totalTax;
@@ -1070,12 +1070,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Tokyo,Japan")) {
+                                className = "Economy";
 
                                 totalTax = 900 * tax;
                                 price = (900 * day) + totalTax;
@@ -1093,12 +1092,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Krabi,Thailand")) {
+                                className = "Economy";
 
                                 totalTax = 1449.1 * tax;
                                 price = (1449.1 * day) + totalTax;
@@ -1116,12 +1114,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Bali,Indonesia")) {
+                                className = "Economy";
 
                                 totalTax = 600 * tax;
                                 price = (600 * day) + totalTax;
@@ -1139,12 +1136,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Jakarta,Indonesia")) {
+                                className = "Economy";
 
                                 totalTax = 534 * tax;
                                 price = (534 * day) + totalTax;
@@ -1162,12 +1158,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Guangzhou,China")) {
+                                className = "Economy";
 
                                 totalTax = 11349 * tax;
                                 price = (11349 * day) + totalTax;
@@ -1185,12 +1180,18 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ============================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
@@ -1233,7 +1234,9 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent e) {
-
+                            String seat = "";
+                            String className = "";
+                            String gate = "";
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 
@@ -1244,6 +1247,7 @@ public class booking extends JFrame {
 
                             //========================================================== business =============================================================================
                             if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Business";
 
                                 totalTax = 894.51*tax;
                                 price = (894.51 * day) + totalTax;
@@ -1261,11 +1265,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 1236.71*tax;
                                 price = (1236.71 * day) + totalTax;
@@ -1283,11 +1287,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 803.71*tax;
                                 price = (803.71 * day) + totalTax;
@@ -1305,11 +1309,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 466.68*tax;
                                 price = (466.68 * day) + totalTax;
@@ -1327,11 +1331,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 552.77 * tax;
                                 price = (552.77 * day) + totalTax;
@@ -1349,11 +1353,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 1078.18*tax;
                                 price = (1078.18 * day) + totalTax;
@@ -1371,11 +1375,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Business";
 
                                 totalTax = 682.62 * tax;
                                 price = (682.62 * day) + totalTax;
@@ -1393,13 +1397,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //========================================================== economy =============================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 734.51*tax;
                                 price = (734.51 * day) + totalTax;
@@ -1417,11 +1421,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 1076.71*tax;
                                 price = (1076.71 * day) + totalTax;
@@ -1439,11 +1443,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 643.71*tax;
                                 price = (643.71 * day) + totalTax;
@@ -1461,11 +1465,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 306.68*tax;
                                 price = (306.68 * day) + totalTax;
@@ -1483,11 +1487,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 392.77 * tax;
                                 price = (392.77 * day) + totalTax;
@@ -1505,11 +1509,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 918.18*tax;
                                 price = (918.18 * day) + totalTax;
@@ -1527,11 +1531,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Economy";
 
                                 totalTax = 522.62 * tax;
                                 price = (522.62 * day) + totalTax;
@@ -1549,11 +1553,18 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ============================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
@@ -1598,7 +1609,9 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent e) {
-
+                            String seat = "";
+                            String className = "";
+                            String gate = "";
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
                             double tax = 0.06 ,totalTax;
@@ -1607,6 +1620,7 @@ public class booking extends JFrame {
                             DecimalFormat format = new DecimalFormat("#0.00");
 
                             if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Business";
 
                                 totalTax = 656.9*tax;
                                 price = (656.9 * day) + totalTax;
@@ -1624,11 +1638,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 1234.71*tax;
                                 price = (1234.71 * day) + totalTax;
@@ -1646,11 +1660,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 461.71*tax;
                                 price = (461.71 * day) + totalTax;
@@ -1668,11 +1682,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 645.79*tax;
                                 price = (645.79 * day) + totalTax;
@@ -1690,11 +1704,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 975.58 * tax;
                                 price = (975.58 * day) + totalTax;
@@ -1712,11 +1726,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 647*tax;
                                 price = (647 * day) + totalTax;
@@ -1734,11 +1748,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Business";
 
                                 totalTax = 446 * tax;
                                 price = (446 * day) + totalTax;
@@ -1756,13 +1770,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //========================================================== economy / adult / oneWay =============================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 496.9*tax;
                                 price = (496.9 * day) + totalTax;
@@ -1780,11 +1794,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 1076.71*tax;
                                 price = (1076.71 * day) + totalTax;
@@ -1802,11 +1816,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 301.7*tax;
                                 price = (301.7 * day) + totalTax;
@@ -1824,11 +1838,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 485.79*tax;
                                 price = (485.79 * day) + totalTax;
@@ -1846,11 +1860,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 815.56 * tax;
                                 price = (815.56 * day) + totalTax;
@@ -1868,11 +1882,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 487*tax;
                                 price = (487 * day) + totalTax;
@@ -1890,11 +1904,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Economy";
 
                                 totalTax = 286 * tax;
                                 price = (286 * day) + totalTax;
@@ -1912,11 +1926,18 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ============================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
@@ -1961,6 +1982,9 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent e) {
+                            String seat = "";
+                            String className = "";
+                            String gate = "";
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
                             double tax = 0.06 ,totalTax;
@@ -1969,6 +1993,7 @@ public class booking extends JFrame {
                             DecimalFormat format = new DecimalFormat("#0.00");
 
                             if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Business";
 
                                 totalTax = 1130.32*tax;
                                 price = (1130.32 * day) + totalTax;
@@ -1986,11 +2011,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 2190.15*tax;
                                 price = (2190.15 * day) + totalTax;
@@ -2008,11 +2033,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 1548.33*tax;
                                 price = (1548.33 * day) + totalTax;
@@ -2030,11 +2055,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 2129.36*tax;
                                 price = (2129.36 * day) + totalTax;
@@ -2052,11 +2077,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 2080.22 * tax;
                                 price = (2080.22 * day) + totalTax;
@@ -2074,11 +2099,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 1301.2*tax;
                                 price = (1301.2 * day) + totalTax;
@@ -2096,11 +2121,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Business";
 
                                 totalTax = 933.16 * tax;
                                 price = (933.16 * day) + totalTax;
@@ -2118,13 +2143,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //========================================================== economy / adult / oneWay =============================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 970.32*tax;
                                 price = (970.32 * day) + totalTax;
@@ -2142,11 +2167,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 2030.15*tax;
                                 price = (2030.15 * day) + totalTax;
@@ -2164,11 +2189,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 1388.33*tax;
                                 price = (1388.33 * day) + totalTax;
@@ -2186,11 +2211,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 1969.36*tax;
                                 price = (1969.36 * day) + totalTax;
@@ -2208,11 +2233,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 1920.22 * tax;
                                 price = (1920.22 * day) + totalTax;
@@ -2230,11 +2255,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 1141.2*tax;
                                 price = (1141.2 * day) + totalTax;
@@ -2252,11 +2277,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Economy";
 
                                 totalTax = 773.16 * tax;
                                 price = (773.16 * day) + totalTax;
@@ -2274,12 +2299,18 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ============================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
@@ -2325,6 +2356,9 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent e) {
+                            String seat = "";
+                            String className = "";
+                            String gate = "";
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
                             double tax = 0.06 ,totalTax;
@@ -2333,6 +2367,7 @@ public class booking extends JFrame {
                             DecimalFormat format = new DecimalFormat("#0.00");
 
                             if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Business";
 
                                 totalTax = 1155.37*tax;
                                 price = (1155.37 * day) + totalTax;
@@ -2350,11 +2385,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 1262.73*tax;
                                 price = (1262.73 * day) + totalTax;
@@ -2372,11 +2407,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 1306*tax;
                                 price = (1306 * day) + totalTax;
@@ -2394,11 +2429,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 2447.06*tax;
                                 price = (2447.06 * day) + totalTax;
@@ -2416,11 +2451,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 1106.36 * tax;
                                 price = (1106.36 * day) + totalTax;
@@ -2438,11 +2473,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 1155.34*tax;
                                 price = (1155.34 * day) + totalTax;
@@ -2460,11 +2495,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Business";
 
                                 totalTax = 935.59 * tax;
                                 price = (935.59 * day) + totalTax;
@@ -2482,13 +2517,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //========================================================== economy / adult / oneWay =============================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 995.37*tax;
                                 price = (995.37 * day) + totalTax;
@@ -2506,11 +2541,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 1102.73*tax;
                                 price = (1102.73 * day) + totalTax;
@@ -2528,11 +2563,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 1146*tax;
                                 price = (1146 * day) + totalTax;
@@ -2550,11 +2585,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 2287.06*tax;
                                 price = (2287.06 * day) + totalTax;
@@ -2572,11 +2607,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 946.36 * tax;
                                 price = (946.36 * day) + totalTax;
@@ -2594,11 +2629,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 995.34*tax;
                                 price = (995.34 * day) + totalTax;
@@ -2616,11 +2651,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Economy";
 
                                 totalTax = 775.59 * tax;
                                 price = (775.59 * day) + totalTax;
@@ -2638,11 +2673,18 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ============================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
@@ -2687,6 +2729,9 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent e) {
+                            String seat = "";
+                            String className = "";
+                            String gate = "";
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
                             double tax = 0.06 ,totalTax;
@@ -2695,6 +2740,7 @@ public class booking extends JFrame {
                             DecimalFormat format = new DecimalFormat("#0.00");
 
                             if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Business";
 
                                 totalTax = 894.51*tax;
                                 price = (894.51 * day) + totalTax;
@@ -2712,11 +2758,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 1236.71*tax;
                                 price = (1236.71 * day) + totalTax;
@@ -2734,11 +2780,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 803.71*tax;
                                 price = (803.71 * day) + totalTax;
@@ -2756,11 +2802,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 466.68*tax;
                                 price = (466.68 * day) + totalTax;
@@ -2778,11 +2824,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 552.77 * tax;
                                 price = (552.77 * day) + totalTax;
@@ -2800,11 +2846,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 1078.18*tax;
                                 price = (1078.18 * day) + totalTax;
@@ -2822,11 +2868,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Business";
 
                                 totalTax = 682.62 * tax;
                                 price = (682.62 * day) + totalTax;
@@ -2844,13 +2890,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //========================================================== economy / adult / oneWay =============================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 867.6*tax;
                                 price = (867.6 * day) + totalTax;
@@ -2868,11 +2914,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 896.91*tax;
                                 price = (896.91 * day) + totalTax;
@@ -2890,11 +2936,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 1014.32*tax;
                                 price = (1014.32 * day) + totalTax;
@@ -2912,11 +2958,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 867.6*tax;
                                 price = (867.6 * day) + totalTax;
@@ -2934,11 +2980,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 887.15 * tax;
                                 price = (887.15 * day) + totalTax;
@@ -2956,11 +3002,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 936.13*tax;
                                 price = (936.13 * day) + totalTax;
@@ -2978,11 +3024,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Economy";
 
                                 totalTax = 718.38 * tax;
                                 price = (718.38 * day) + totalTax;
@@ -3000,11 +3046,18 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ============================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
@@ -3049,6 +3102,11 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent e) {
+
+                            String className = "";
+                            String seat = "";
+                            String gate = "";
+
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
                             double tax = 0.06 ,totalTax;
@@ -3057,6 +3115,7 @@ public class booking extends JFrame {
                             DecimalFormat format = new DecimalFormat("#0.00");
 
                             if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Business";
 
                                 totalTax = 894.51*tax;
                                 price = (894.51 * day) + totalTax;
@@ -3074,11 +3133,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 1236.71*tax;
                                 price = (1236.71 * day) + totalTax;
@@ -3096,11 +3155,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 803.71*tax;
                                 price = (803.71 * day) + totalTax;
@@ -3118,11 +3177,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 466.68*tax;
                                 price = (466.68 * day) + totalTax;
@@ -3140,11 +3199,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 552.77 * tax;
                                 price = (552.77 * day) + totalTax;
@@ -3162,11 +3221,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 1078.18*tax;
                                 price = (1078.18 * day) + totalTax;
@@ -3184,11 +3243,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Business";
 
                                 totalTax = 682.62 * tax;
                                 price = (682.62 * day) + totalTax;
@@ -3206,13 +3265,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //========================================================== economy / adult / oneWay =============================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 4876.64*tax;
                                 price = (4876.64 * day) + totalTax;
@@ -3230,11 +3289,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 1827.98*tax;
                                 price = (1827.98 * day) + totalTax;
@@ -3252,11 +3311,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 1568.77*tax;
                                 price = (1568.77 * day) + totalTax;
@@ -3274,11 +3333,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 2625.07*tax;
                                 price = (2625.07 * day) + totalTax;
@@ -3296,11 +3355,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 2981.10 * tax;
                                 price = (2981.10 * day) + totalTax;
@@ -3318,11 +3377,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 4910.05*tax;
                                 price = (4910.05 * day) + totalTax;
@@ -3340,11 +3399,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Economy";
 
                                 totalTax = 3841.95 * tax;
                                 price = (3841.95 * day) + totalTax;
@@ -3362,11 +3421,18 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ============================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
@@ -3412,6 +3478,9 @@ public class booking extends JFrame {
                     totalBtn.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent e) {
+                            String seat = "";
+                            String className = "";
+                            String gate ="";
                             int totalCategory = 0;
                             double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
                             double tax = 0.06 ,totalTax;
@@ -3420,6 +3489,8 @@ public class booking extends JFrame {
                             DecimalFormat format = new DecimalFormat("#0.00");
 
                             if(Business.isSelected() && To.getSelectedItem().equals("Penang")) {
+
+                                className = "Business";
 
                                 totalTax = 894.51*tax;
                                 price = (894.51 * day) + totalTax;
@@ -3437,11 +3508,12 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
+
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 1236.71*tax;
                                 price = (1236.71 * day) + totalTax;
@@ -3459,11 +3531,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Business";
 
                                 totalTax = 803.71*tax;
                                 price = (803.71 * day) + totalTax;
@@ -3481,11 +3553,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Business";
 
                                 totalTax = 466.68*tax;
                                 price = (466.68 * day) + totalTax;
@@ -3503,11 +3575,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Business";
 
                                 totalTax = 552.77 * tax;
                                 price = (552.77 * day) + totalTax;
@@ -3525,11 +3597,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Business";
 
                                 totalTax = 1078.18*tax;
                                 price = (1078.18 * day) + totalTax;
@@ -3547,11 +3619,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
                             else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Business";
 
                                 totalTax = 682.62 * tax;
                                 price = (682.62 * day) + totalTax;
@@ -3569,13 +3641,13 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Business");
+                                seat = "BS17";
+                                gate = "B2";
                             }
 
                             //========================================================== economy / adult / oneWay =============================================================================
                             else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) {
+                                className = "Economy";
 
                                 totalTax = 734.51*tax;
                                 price = (734.51 * day) + totalTax;
@@ -3593,11 +3665,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 1076.71*tax;
                                 price = (1076.71 * day) + totalTax;
@@ -3615,11 +3687,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) {
+                                className = "Economy";
 
                                 totalTax = 643.71*tax;
                                 price = (643.71 * day) + totalTax;
@@ -3637,11 +3709,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) {
+                                className = "Economy";
 
                                 totalTax = 306.68*tax;
                                 price = (306.68 * day) + totalTax;
@@ -3659,11 +3731,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) {
+                                className = "Economy";
 
                                 totalTax = 392.77 * tax;
                                 price = (392.77 * day) + totalTax;
@@ -3681,11 +3753,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) {
+                                className = "Economy";
 
                                 totalTax = 918.18*tax;
                                 price = (918.18 * day) + totalTax;
@@ -3703,11 +3775,11 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
                             else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) {
+                                className = "Economy";
 
                                 totalTax = 522.62 * tax;
                                 price = (522.62 * day) + totalTax;
@@ -3725,17 +3797,23 @@ public class booking extends JFrame {
 
                                 totalFinalOfPrice = totalPrice * totalCategory;
 
-                                textPrice.setText("RM"+format.format(totalFinalOfPrice));
-                                totalField.setText("RM"+ format.format(totalFinalOfPrice));
-                                textClass.setText("Economy");
+                                seat = "EC25";
+                                gate = "E3";
                             }
-
+                            //================================================================================== Gate ================================================================================================
+                            labelGate.setText(gate);
+                            //================================================================================== Seat ================================================================================================
+                            textSeat.setText(seat);
+                            //================================================================================== Class Name ===========================================================================================
+                            textClass.setText(className);
+                            //================================================================================== Price ===============================================================================================
+                            textPrice.setText("RM"+format.format(totalFinalOfPrice));
+                            totalField.setText("RM"+ format.format(totalFinalOfPrice));
                             //================================================================================== Calendar =================================================================================================================
                             Calendar timer = Calendar.getInstance();
                             timer.getTime();
                             SimpleDateFormat tTime = new SimpleDateFormat("HH:mm:ss");
                             textTime.setText(""+timePicker.getTime());
-
                             //================================================================================== Date =================================================================================================================
                             SimpleDateFormat Tdate = new SimpleDateFormat("E,dd-MM-yyyy");
                             bookingTime.setText("Booking Time : "+Tdate.format(timer.getTime()) + " / " +tTime.format(timer.getTime()));
@@ -3776,12 +3854,12 @@ public class booking extends JFrame {
 
                 String name = labelName.getText();
                 String Time = textTime.getText();
-                String gate = "B2";
+                String gate = labelGate.getText();
                 String ticketID = textTicketID.getText();
                 String flight = "TGG321";
                 String From = textFrom.getText();
                 String to = textTo.getText();
-                String seat = "BS17";
+                String seat = textSeat.getText();
                 String className = textClass.getText();
 
                 display.display_ticket(name,gate,seat,Time,flight,From,to,className,ticketID);
