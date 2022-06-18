@@ -182,6 +182,7 @@ public class booking extends JFrame {
 		totalField = new JTextField();
 		totalField.setBackground(new Color(255, 255, 204));
 		totalField.setBounds(132, 563, 202, 31);
+		totalField.setEditable(false);
 		contentPane.add(totalField);
 		totalField.setColumns(10);
 		
@@ -208,6 +209,7 @@ public class booking extends JFrame {
 		textClass.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textClass.setHorizontalAlignment(SwingConstants.CENTER);
 		textClass.setBounds(152, 166, 620, 34);
+		textClass.setEditable(false);
 		panel2.add(textClass);
 		textClass.setColumns(10);
 		
@@ -215,6 +217,7 @@ public class booking extends JFrame {
 		textFrom.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textFrom.setHorizontalAlignment(SwingConstants.CENTER);
 		textFrom.setBounds(152, 211, 422, 34);
+		textFrom.setEditable(false);
 		panel2.add(textFrom);
 		textFrom.setColumns(10);
 		
@@ -222,6 +225,7 @@ public class booking extends JFrame {
 		textTo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textTo.setHorizontalAlignment(SwingConstants.CENTER);
 		textTo.setColumns(10);
+		textTo.setEditable(false);
 		textTo.setBounds(152, 256, 422, 34);
 		panel2.add(textTo);
 		
@@ -229,6 +233,7 @@ public class booking extends JFrame {
 		textWay.setFont(new Font("Tahoma", Font.BOLD, 13));
 		textWay.setHorizontalAlignment(SwingConstants.CENTER);
 		textWay.setColumns(10);
+		textWay.setEditable(false);
 		textWay.setBounds(638, 256, 134, 27);
 		panel2.add(textWay);
 		
@@ -236,6 +241,7 @@ public class booking extends JFrame {
 		textTicketID.setFont(new Font("Arial", Font.BOLD, 40));
 		textTicketID.setHorizontalAlignment(SwingConstants.CENTER);
 		textTicketID.setColumns(10);
+		textTicketID.setEditable(false);
 		textTicketID.setBounds(638, 329, 113, 77);
 		panel2.add(textTicketID);
 		
@@ -243,6 +249,7 @@ public class booking extends JFrame {
 		textPrice.setFont(new Font("Tahoma", Font.BOLD, 13));
 		textPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		textPrice.setColumns(10);
+		textPrice.setEditable(false);
 		textPrice.setBounds(152, 301, 134, 27);
 		panel2.add(textPrice);
 		
@@ -250,6 +257,7 @@ public class booking extends JFrame {
 		textTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		textTime.setHorizontalAlignment(SwingConstants.CENTER);
 		textTime.setColumns(10);
+		textTime.setEditable(false);
 		textTime.setBounds(152, 339, 134, 27);
 		panel2.add(textTime);
 		
@@ -257,6 +265,7 @@ public class booking extends JFrame {
 		textBackDate.setFont(new Font("Tahoma", Font.BOLD, 13));
 		textBackDate.setHorizontalAlignment(SwingConstants.CENTER);
 		textBackDate.setColumns(10);
+		textBackDate.setEditable(false);
 		textBackDate.setBounds(405, 339, 169, 27);
 		panel2.add(textBackDate);
 		
@@ -264,6 +273,7 @@ public class booking extends JFrame {
 		textRoute.setFont(new Font("Arial", Font.BOLD, 40));
 		textRoute.setHorizontalAlignment(SwingConstants.CENTER);
 		textRoute.setColumns(10);
+		textRoute.setEditable(false);
 		textRoute.setBounds(22, 93, 113, 77);
 		panel2.add(textRoute);
 		
@@ -271,6 +281,7 @@ public class booking extends JFrame {
 		textGoDate.setFont(new Font("Tahoma", Font.BOLD, 13));
 		textGoDate.setHorizontalAlignment(SwingConstants.CENTER);
 		textGoDate.setColumns(10);
+		textGoDate.setEditable(false);
 		textGoDate.setBounds(405, 301, 169, 27);
 		panel2.add(textGoDate);
 		
@@ -354,6 +365,7 @@ public class booking extends JFrame {
 		textSeat.setHorizontalAlignment(SwingConstants.CENTER);
 		textSeat.setFont(new Font("Tahoma", Font.BOLD, 13));
 		textSeat.setBounds(488, 379, 86, 27);
+		textSeat.setEditable(false);
 		panel2.add(textSeat);
 		textSeat.setColumns(10);
 		
