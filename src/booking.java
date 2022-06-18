@@ -1,14 +1,7 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
-import java.awt.FlowLayout;
-import java.awt.CardLayout;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -22,14 +15,12 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
-import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
 import javax.swing.ButtonGroup;
 import com.toedter.calendar.JDateChooser;
 import com.github.lgooddatepicker.components.TimePicker;
-import com.toedter.components.JSpinField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.SpinnerNumberModel;
@@ -61,38 +52,28 @@ public class booking extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1324, 715);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.ORANGE);
+		contentPane.setBackground(new Color(255, 204, 153));
 		contentPane.setBorder(new LineBorder(Color.BLACK, 4));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton backBtn = new JButton("Back");
-		backBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
-		backBtn.setBackground(Color.LIGHT_GRAY);
-		backBtn.setBounds(154, 617, 96, 23);
-		contentPane.add(backBtn);
-		
-		backBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent a) {
-				if(a.getSource()==backBtn) {
-					log_in login = new log_in();
-					login.setLocationRelativeTo(null);
-					login.setVisible(true);
-				}
-			}
-			
-		});
+		JButton cancelBtn = new JButton("Cancel");
+		cancelBtn.setForeground(new Color(255, 255, 255));
+		cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
+		cancelBtn.setBackground(new Color(0, 0, 0));
+		cancelBtn.setBounds(35, 617, 96, 23);
+		contentPane.add(cancelBtn);
 		
 		JPanel panel2 = new JPanel();
 		panel2.setBorder(new LineBorder(Color.BLACK));
-		panel2.setBackground(new Color(255, 255, 102));
+		panel2.setBackground(new Color(255, 204, 102));
 		panel2.setBounds(468, 153, 794, 432);
 		contentPane.add(panel2);
 		panel2.setLayout(null);
 		
 		JPanel panel1 = new JPanel();
-		panel1.setBorder(new LineBorder(Color.BLACK));
-		panel1.setBackground(Color.YELLOW);
+		panel1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel1.setBackground(new Color(255, 255, 204));
 		panel1.setBounds(35, 11, 1239, 131);
 		contentPane.add(panel1);
 		panel1.setLayout(null);
@@ -144,24 +125,10 @@ public class booking extends JFrame {
 		
 		JRadioButton Business = new JRadioButton("Business");
 		buttonGroup_1.add(Business);
-		Business.setBackground(Color.ORANGE);
+		Business.setBackground(new Color(255, 204, 153));
 		Business.setFont(new Font("Tahoma", Font.BOLD, 11));
 		Business.setBounds(35, 251, 109, 23);
 		contentPane.add(Business);
-		
-		double st = 0.00;
-		
-		Business.addActionListener(new ActionListener () {
-			public void actionPerformed(ActionEvent stand) {
-				
-				double st = 0.00;
-				
-				if(stand.getSource()==Business) {
-					st = 100;
-				}
-			}
-			
-		});
 		
 		JLabel lblNewLabel_5 = new JLabel("Category");
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 15));
@@ -170,7 +137,7 @@ public class booking extends JFrame {
 		
 		JRadioButton economy = new JRadioButton("Economy");
 		buttonGroup_1.add(economy);
-		economy.setBackground(Color.ORANGE);
+		economy.setBackground(new Color(255, 204, 153));
 		economy.setFont(new Font("Tahoma", Font.BOLD, 11));
 		economy.setBounds(35, 277, 109, 23);
 		contentPane.add(economy);
@@ -181,14 +148,14 @@ public class booking extends JFrame {
 		
 		JRadioButton oneWay = new JRadioButton("One Way");
 		buttonGroup.add(oneWay);
-		oneWay.setBackground(Color.ORANGE);
+		oneWay.setBackground(new Color(255, 204, 153));
 		oneWay.setFont(new Font("Tahoma", Font.BOLD, 11));
 		oneWay.setBounds(154, 251, 85, 23);
 		contentPane.add(oneWay);
 		
 		JRadioButton Return = new JRadioButton("Return");
 		buttonGroup.add(Return);
-		Return.setBackground(Color.ORANGE);
+		Return.setBackground(new Color(255, 204, 153));
 		Return.setFont(new Font("Tahoma", Font.BOLD, 11));
 		Return.setBounds(154, 277, 85, 23);
 		contentPane.add(Return);
@@ -213,7 +180,7 @@ public class booking extends JFrame {
 		contentPane.add(lblNewLabel_10);
 		
 		totalField = new JTextField();
-		totalField.setBackground(new Color(255, 255, 102));
+		totalField.setBackground(new Color(255, 255, 204));
 		totalField.setBounds(132, 563, 202, 31);
 		contentPane.add(totalField);
 		totalField.setColumns(10);
@@ -224,15 +191,17 @@ public class booking extends JFrame {
 		contentPane.add(totalLabel);
 		
 		JButton totalBtn = new JButton("Total");
-		totalBtn.setBackground(Color.LIGHT_GRAY);
+		totalBtn.setForeground(new Color(255, 255, 255));
+		totalBtn.setBackground(new Color(0, 0, 0));
 		totalBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
 		totalBtn.setBounds(286, 617, 89, 23);
 		contentPane.add(totalBtn);
 		
 		JButton resetBtn = new JButton("Reset");
-		resetBtn.setBackground(Color.LIGHT_GRAY);
+		resetBtn.setForeground(new Color(255, 255, 255));
+		resetBtn.setBackground(new Color(0, 0, 0));
 		resetBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
-		resetBtn.setBounds(35, 617, 89, 23);
+		resetBtn.setBounds(166, 617, 89, 23);
 		contentPane.add(resetBtn);
 		
 		textClass = new JTextField();
@@ -307,7 +276,7 @@ public class booking extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(255, 255, 204));
 		panel.setBounds(22, 11, 750, 77);
 		panel2.add(panel);
 		panel.setLayout(null);
@@ -405,8 +374,9 @@ public class booking extends JFrame {
 		panel2.add(labelGate);
 		
 		ticketBtn = new JButton("TICKET");
+		ticketBtn.setForeground(new Color(255, 255, 255));
 		ticketBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
-		ticketBtn.setBackground(Color.LIGHT_GRAY);
+		ticketBtn.setBackground(new Color(0, 0, 0));
 		ticketBtn.setBounds(1122, 613, 140, 31);
 		contentPane.add(ticketBtn);
 		
@@ -476,6 +446,17 @@ public class booking extends JFrame {
 		lblDay.setBounds(60, 501, 46, 14);
 		contentPane.add(lblDay);
 		
+		//Action for Cancel Button
+		cancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				if(a.getSource()==cancelBtn) {
+					System.exit(0);
+				}
+			}
+			
+		});
+		
+		//Action for Calculation
 		from.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -1228,7 +1209,6 @@ public class booking extends JFrame {
 					To.addItem("Kota Bharu,Kelantan");
 					To.addItem("Kuching,Sarawak");
 					To.addItem("KLIA");
-					To.removeItem("Johor Bahru");
 					
 					
 					totalBtn.addActionListener(new ActionListener() {
@@ -1603,7 +1583,6 @@ public class booking extends JFrame {
 					To.addItem("Terengganu");
 					To.addItem("Kota Bharu,Kelantan");
 					To.addItem("Kuching,Sarawak");
-					To.removeItem("Johor Bahru");
 					
 					
 					totalBtn.addActionListener(new ActionListener() {
@@ -1976,7 +1955,6 @@ public class booking extends JFrame {
 					To.addItem("Kota Bharu,Kelantan");
 					To.addItem("Kuching,Sarawak");
 					To.addItem("KLIA");
-					To.removeItem("Johor Bahru");
 					
 					
 					totalBtn.addActionListener(new ActionListener() {
@@ -2350,7 +2328,6 @@ public class booking extends JFrame {
 					To.addItem("Kota Bharu,Kelantan");
 					To.addItem("Kuching,Sarawak");
 					To.addItem("KLIA");
-					To.removeItem("Johor Bahru");
 					
 					
 					totalBtn.addActionListener(new ActionListener() {
@@ -2723,7 +2700,6 @@ public class booking extends JFrame {
 					To.addItem("Kota Bharu,Kelantan");
 					To.addItem("Kuching,Sarawak");
 					To.addItem("KLIA");
-					To.removeItem("Johor Bahru");
 					
 					
 					totalBtn.addActionListener(new ActionListener() {
@@ -3096,7 +3072,6 @@ public class booking extends JFrame {
 					To.addItem("Kota Bharu,Kelantan");
 					To.addItem("Kuching,Sarawak");
 					To.addItem("KLIA");
-					To.removeItem("Johor Bahru");
 					
 					
 					totalBtn.addActionListener(new ActionListener() {
@@ -3472,7 +3447,6 @@ public class booking extends JFrame {
 					To.addItem("Kota Bharu,Kelantan");
 					To.addItem("Kuching,Sarawak");
 					To.addItem("KLIA");
-					To.removeItem("Johor Bahru");
 					
 					
 					totalBtn.addActionListener(new ActionListener() {
@@ -3841,8 +3815,11 @@ public class booking extends JFrame {
 		
 	}
 	
+	//Method for transfer data to next interface
 	public void name(String name) {
+		
 		labelName.setText(name);
+		
 		ticketBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
