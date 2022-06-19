@@ -25,6 +25,7 @@ public class register extends JFrame {
 	private JPasswordField passwordField1;
 	private JPasswordField passwordField2;
 	
+    //Constructor Method without parameter 
 	public register() {
 		setTitle("AVION AIRLINE");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\Downloads\\8-removebg-preview (2).png"));
@@ -155,78 +156,76 @@ public class register extends JFrame {
 		chckbxNewCheckBox.setBounds(180, 412, 224, 23);
 		frame.add(chckbxNewCheckBox);
 		
-		//Action for Register Button
+		//========================================================================================================================= ActionListener for each Components =====================================================================================================
+		
+		//ActionListener for Register Button
 		registerBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String username = usernameField.getText();
+				
 				String pass1 = new String(passwordField1.getPassword());
-				String pass2 = new String(passwordField2.getPassword());
-			
+			    
 				if(e.getSource()==registerBtn) {
 					
-					switch(username) {
-					case "":
-						JOptionPane.showMessageDialog(null, "Please fill up the places that have symbol '*'");
-						break;
-					default:
-						switch(pass1) {
-						case "":
-							JOptionPane.showMessageDialog(null, "Please fill up the places that have symbol '*'");
-							break;
-						default:
-							switch(pass2) {
-							case "":
-								JOptionPane.showMessageDialog(null, "Please fill up the places that have symbol '*'");
-								break;
-							default:
-									JOptionPane.showMessageDialog(null, "Your Register is successful!!!");
-									log_in lg = new log_in();
-									lg.setVisible(true);
-									lg.setLocationRelativeTo(null);
-									dispose();
-									
-									String name = firstNameField.getText() + " " + lastNameField.getText();
-									
-									String userName = usernameField.getText();
-									String password = pass1;
-									lg.confirmUsername(userName,password,name);
-								    break;
-							}
-						}
-				}
-			}
+					if(firstNameField.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "You do not insert your first name");
+					}
+					if(lastNameField.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "You do not insert your last name");
+					}
+					if(usernameField.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "You do not insert your Username");
+					}
+					if(passwordField1.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "You do not insert your password");
+					}
+					if(passwordField2.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "You do not insert your confirm password");
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Your Register is successful!!!");
+						log_in lg = new log_in();
+						lg.setVisible(true);
+						lg.setLocationRelativeTo(null);
+						dispose();
+						
+						String name = firstNameField.getText() + " " + lastNameField.getText();
+						
+						String userName = usernameField.getText();
+						String password = pass1;
+						
+						lg.confirmation(userName,password,name);
+					}
+			    }
 			
 			}
 		});
 		
-		//Action for Reset Button
+		//ActionListener for Reset Button
 		resetBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent r) {
-				if(r.getSource()==resetBtn) {
+			public void actionPerformed(ActionEvent e) {
+				
 					firstNameField.setText("");
 					lastNameField.setText("");
 					usernameField.setText("");
 					passwordField1.setText("");
 					passwordField2.setText("");
-				}
+				
 			}
 			
 		});
 		
-		//Action for Cancel Button
+		//ActionListener for Cancel Button
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==btnCancel) {
 					System.exit(0);
-				}
+				
 			}
 		});
 		
-		//Action for Show PAssword CheckBox 
+		//ActionListener for Show Password CheckBox 
 		chckbxNewCheckBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(e.getSource()==chckbxNewCheckBox) {
 					if(chckbxNewCheckBox.isSelected()) {
 						passwordField1.setEchoChar((char) 0);
 						passwordField2.setEchoChar((char) 0);
@@ -235,7 +234,7 @@ public class register extends JFrame {
 						passwordField1.setEchoChar('*');
 						passwordField2.setEchoChar('*');
 					}
-			}
+			
 			}
 		});
 	}
