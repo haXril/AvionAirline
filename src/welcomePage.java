@@ -10,13 +10,14 @@ import javax.swing.JButton;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 
 public class welcomePage extends JFrame {
 
 	private JPanel frame;
-	
+    
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -31,13 +32,14 @@ public class welcomePage extends JFrame {
 		});
 	}
 
+	//Constructor Method without parameter 
 	public welcomePage() {
 		setTitle("AVION AIRLINE");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\Downloads\\8-removebg-preview (2).png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 681, 633);
 		frame = new JPanel();
-		frame.setBackground(new Color(255, 255, 204));
+		frame.setBackground(new Color(255, 204, 153));
 		frame.setBorder(new LineBorder(Color.BLACK, 4));
 		setContentPane(frame);
 		frame.setLayout(null);
@@ -62,19 +64,20 @@ public class welcomePage extends JFrame {
 		JButton btnNewButton = new JButton("ENTER");
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(287, 445, 89, 23);
+		btnNewButton.setBounds(283, 445, 89, 23);
 		frame.add(btnNewButton);
-				
+		
+		//========================================================================================================================= ActionListener for each Components =====================================================================================================
+
 		//Action for Enter Button
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(e.getSource()==btnNewButton) {
 					register r = new register();
 					r.setVisible(true);
 					r.setLocationRelativeTo(null);
 					dispose();
-				}
+				
 			}
 		});
 		
