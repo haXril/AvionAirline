@@ -18,14 +18,14 @@ public class ticket extends JFrame {
 	private JPanel contentPane;
 	private JLabel labelName,labelClass1,labelClass2,labelClass3,labelGate,labelGate2,labelSeat,labelSeat2,labelTime,labelTime2,labelFlight,labelFlight2,labelFrom,labelFrom2,labelTo,labelTo2,labelTicketId;
 	
-
+	//Constructor Method without parameter 
 	public ticket() {
 		setTitle("AVION AIRLINE");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\Downloads\\8-removebg-preview (2).png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1191, 765);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 204, 51));
+		contentPane.setBackground(new Color(255, 204, 153));
 		contentPane.setBorder(new LineBorder(Color.BLACK, 4));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -295,6 +295,7 @@ public class ticket extends JFrame {
 		
 	}
 	
+	//Mutator Method for all attributes 
 	public void display_ticket( String name1, String gate, String seat, String Time, String flight, String From, String to, String className,  String ticketID) {
 	
 				labelClass1.setText(className);
