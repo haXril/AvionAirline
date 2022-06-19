@@ -24,6 +24,7 @@ public class log_in extends JFrame {
 	private JButton login_btn;
 	private JLabel labelName;
 	
+    //Constructor Method without parameter 
 	public log_in() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\Downloads\\8-removebg-preview (2).png"));
 		setTitle("AVION AIRLINE");
@@ -119,6 +120,8 @@ public class log_in extends JFrame {
 		labelName.setBounds(35, 226, 460, 14);
 		frame.add(labelName);
 		
+		//========================================================================================================================= ActionListener for each Components =====================================================================================================
+
 		//Action for Reset Button
 		resetBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent v) {
@@ -149,25 +152,33 @@ public class log_in extends JFrame {
 		
 	}
 	
-	public void confirmUsername(String userName, String password,String name) {
+	//Mutator Method for all attributes 
+	public void confirmation(String userName, String password,String name) {
 		
 		labelName.setText(name);
 		
+		//ActionListener for login Button
 		login_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
 					if(UsernameField.getText().equals(userName) && passwordField.getText().equals(password) ) {
+						
+						//display booking frame
 						booking bk = new booking();
 						bk.setVisible(true);
 						bk.setLocationRelativeTo(null);
 						dispose();
 						
+						//Declaration all attributes for booking frame
 						String name = labelName.getText();
 						
+						//Input data for booking frame
 						bk.name(name);
 					}
 					else {
+						
+						//Popup message for uncorrect input data
 						JOptionPane.showMessageDialog(null, "Please insert the correct username and password");
 					}
 			}
