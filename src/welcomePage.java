@@ -2,14 +2,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+
 import java.awt.Font;
-import javax.swing.JButton;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
@@ -32,6 +32,10 @@ public class welcomePage extends JFrame {
 		});
 	}
 
+	JProgressBar progressBar = new JProgressBar();
+	JLabel lblNewLabel = new JLabel();
+	
+	
 	//Constructor Method without parameter 
 	public welcomePage() {
 		setTitle("AVION AIRLINE");
@@ -54,32 +58,21 @@ public class welcomePage extends JFrame {
 		logo.setBounds(69, 0, 595, 306);
 		frame.add(logo);
 		
-		JLabel welcomeLabel = new JLabel("Welcome To Our System!!!");
+		JLabel welcomeLabel = new JLabel("Welcome to Our Systems");
 		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeLabel.setForeground(new Color(0, 0, 204));
 		welcomeLabel.setFont(new Font("SimSun", Font.BOLD, 20));
 		welcomeLabel.setBounds(10, 366, 644, 68);
 		frame.add(welcomeLabel);
 		
-		JButton btnNewButton = new JButton("ENTER");
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setBounds(283, 445, 89, 23);
-		frame.add(btnNewButton);
 		
-		//========================================================================================================================= ActionListener for each Components =====================================================================================================
-
-		//Action for Enter Button
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-					register r = new register();
-					r.setVisible(true);
-					r.setLocationRelativeTo(null);
-					dispose();
-				
-			}
-		});
+		progressBar.setBounds(103, 445, 439, 14);
+		progressBar.setVisible(true);
+		frame.add(progressBar);
+		
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel.setBounds(496, 426, 46, 14);
+		frame.add(lblNewLabel);
 		
 	}
 }
