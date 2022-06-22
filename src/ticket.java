@@ -17,6 +17,7 @@ public class ticket extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel labelName,labelClass1,labelClass2,labelClass3,labelGate,labelGate2,labelSeat,labelSeat2,labelTime,labelTime2,labelFlight,labelFlight2,labelFrom,labelFrom2,labelTo,labelTo2,labelTicketId;
+	private JButton payBtn;
 	
 	//Constructor Method without parameter 
 	public ticket() {
@@ -111,7 +112,7 @@ public class ticket extends JFrame {
 		
 		labelSeat2 = new JLabel("");
 		labelSeat2.setFont(new Font("Arial", Font.PLAIN, 13));
-		labelSeat2.setBounds(51, 203, 46, 14);
+		labelSeat2.setBounds(51, 203, 79, 14);
 		panel_2.add(labelSeat2);
 		
 		labelTime2 = new JLabel("");
@@ -180,7 +181,7 @@ public class ticket extends JFrame {
 		labelTicketId.setBounds(453, 23, 46, 33);
 		panel_1.add(labelTicketId);
 		
-		JLabel lblNewLabel_6 = new JLabel("Passanger Name :");
+		JLabel lblNewLabel_6 = new JLabel("Booker Name :");
 		lblNewLabel_6.setFont(new Font("Stencil", Font.PLAIN, 15));
 		lblNewLabel_6.setBounds(37, 92, 141, 16);
 		panel_1.add(lblNewLabel_6);
@@ -227,7 +228,7 @@ public class ticket extends JFrame {
 		
 		labelSeat = new JLabel("");
 		labelSeat.setFont(new Font("Arial", Font.PLAIN, 13));
-		labelSeat.setBounds(83, 203, 173, 14);
+		labelSeat.setBounds(83, 203, 219, 14);
 		panel_1.add(labelSeat);
 		
 		labelTime = new JLabel("");
@@ -261,9 +262,13 @@ public class ticket extends JFrame {
 		panel_1.add(barcode1);
 		
 		labelName = new JLabel("");
-		labelName.setFont(new Font("Arial", Font.PLAIN, 13));
-		labelName.setBounds(188, 92, 363, 14);
+		labelName.setFont(new Font("Arial", Font.BOLD, 14));
+		labelName.setBounds(166, 83, 363, 25);
 		panel_1.add(labelName);
+		
+		JLabel lblNewLabel_2 = new JLabel("kamal\nkamal");
+		lblNewLabel_2.setBounds(210, 271, 92, 38);
+		panel_1.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel = new JLabel("YOUR TICKET");
 		lblNewLabel.setFont(new Font("Stencil", Font.BOLD, 40));
@@ -275,20 +280,28 @@ public class ticket extends JFrame {
 		lblNewLabel_1_1_1.setBounds(431, 113, 366, 14);
 		contentPane.add(lblNewLabel_1_1_1);
 		
-		JButton btnNewButton = new JButton("EXIT");
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton.setBounds(1050, 621, 89, 40);
-		contentPane.add(btnNewButton);
+	    payBtn = new JButton("RECIEPT");
+		payBtn.setBackground(Color.LIGHT_GRAY);
+		payBtn.setFont(new Font("Tahoma", Font.BOLD, 13));
+		payBtn.setBounds(1011, 632, 89, 40);
+		contentPane.add(payBtn);
 		
-		//Action for Exit Button
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton cancelBtn = new JButton("CANCEL");
+		cancelBtn.setFont(new Font("Tahoma", Font.BOLD, 13));
+		cancelBtn.setBackground(Color.LIGHT_GRAY);
+		cancelBtn.setBounds(68, 632, 89, 40);
+		contentPane.add(cancelBtn);
+		
+		
+        //ActionListener for cancel Button
+		cancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(JOptionPane.showConfirmDialog(null, "Confirm if you want to exit ", "Customer Booking Systems",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-					System.exit(0);
-					
-				}
+				//display booking frame
+				booking bk = new booking();
+				bk.setVisible(true);
+				bk.setLocationRelativeTo(null);
+				dispose();
 				
 			}
 		});
@@ -296,7 +309,7 @@ public class ticket extends JFrame {
 	}
 	
 	//Mutator Method for all attributes 
-	public void display_ticket( String name1, String gate, String seat, String Time, String flight, String From, String to, String className,  String ticketID) {
+	public void display_ticket( String name1, String gate, String seat, String Time, String flight, String From, String to, String className,  String ticketID , double price, double flightPrice, int adultPrice, int childPrice, int adultQuantity, int childQuantity) {
 	
 				labelClass1.setText(className);
 				labelClass2.setText(className);
@@ -315,5 +328,41 @@ public class ticket extends JFrame {
 				labelTo.setText(to);
 				labelTo2.setText(to);
 				labelName.setText(name1);
+				
+				
+				payBtn.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						reciept r = new reciept();
+						r.setVisible(true);
+						r.setLocationRelativeTo(null);
+						dispose();
+						
+						String name2 = name1;
+						String gate2 = gate;
+						String seat2 = seat;
+						String Time2 = Time;
+						String flight2 = flight;
+						String From2 = From;
+						String to2 = to;
+						String className2 = className;
+						String ticketID2 = ticketID;
+						double price2 = price;
+						double price3 = flightPrice;
+						int adult = adultPrice;
+						int child = childPrice;
+						int ad = adultQuantity;
+						int ch = childQuantity;
+						
+						r.data(name2,  gate2,  seat2,  Time2,  flight2,  From2,  to2,  className2,   ticketID2 ,  price2, price3, adult, child, ad, ch);
+						
+						/*
+						if(JOptionPane.showConfirmDialog(null, "Confirm if you want to exit ", "Customer Booking Systems",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+							
+							
+						}*/
+						
+					}
+				});
 	}
 }
