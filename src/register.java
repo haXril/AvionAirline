@@ -162,39 +162,70 @@ public class register extends JFrame {
 		registerBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String firstName = firstNameField.getText();
+				String lastName = lastNameField.getText();
+				String username = usernameField.getText();
+				
 				String pass1 = new String(passwordField1.getPassword());
-			    
+				String pass2 = new String(passwordField2.getPassword());
+				
 				if(e.getSource()==registerBtn) {
 					
-					if(firstNameField.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "You do not insert your first name");
-					}
-					if(lastNameField.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "You do not insert your last name");
-					}
-					if(usernameField.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "You do not insert your Username");
-					}
-					if(passwordField1.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "You do not insert your password");
-					}
-					if(passwordField2.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "You do not insert your confirm password");
-					}
-					else {
-						JOptionPane.showMessageDialog(null, "Your Register is successful!!!");
-						log_in lg = new log_in();
-						lg.setVisible(true);
-						lg.setLocationRelativeTo(null);
-						dispose();
+					
+					switch(firstName) {
+					
+					case "":
+						JOptionPane.showMessageDialog(null, "You do not insert your first name", "" , JOptionPane.ERROR_MESSAGE);
+						break;
 						
-						String name = firstNameField.getText() + " " + lastNameField.getText();
+					default:
+						switch(lastName) {
 						
-						String userName = usernameField.getText();
-						String password = pass1;
-						
-						lg.confirmation(userName,password,name);
+						case "":
+							JOptionPane.showMessageDialog(null, "You do not insert your last name", "" , JOptionPane.ERROR_MESSAGE);
+							break;
+						default:
+							switch(username) {
+							case "":
+								JOptionPane.showMessageDialog(null, "You do not insert your Username", "" , JOptionPane.ERROR_MESSAGE);
+								break;
+							default:
+								switch(pass1) {
+								
+								case "":
+									JOptionPane.showMessageDialog(null, "You do not insert your password", "" , JOptionPane.ERROR_MESSAGE);
+									break;
+								default:
+									switch(pass2) {
+									
+									case "":
+										JOptionPane.showMessageDialog(null, "You do not insert your confirm password", "" , JOptionPane.ERROR_MESSAGE);
+										break;
+									default:
+										if(passwordField1.getText().equalsIgnoreCase(pass2)) {
+											
+											JOptionPane.showMessageDialog(null, "Your Register is successful!!!");
+											log_in lg = new log_in();
+											lg.setVisible(true);
+											lg.setLocationRelativeTo(null);
+											dispose();
+											
+											String name = firstNameField.getText() + " " + lastNameField.getText();
+											
+											String userName = usernameField.getText();
+											String password = pass1;
+											
+											lg.confirmation(userName,password,name);
+										}
+										else {
+											JOptionPane.showMessageDialog(null, "You insert the wrong password at confirm password", "" , JOptionPane.ERROR_MESSAGE);
+										}
+									}
+								}
+							}
+						}
 					}
+					
 			    }
 			
 			}
