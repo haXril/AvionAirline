@@ -44,11 +44,29 @@ public class booking extends JFrame {
 	private JTextField textBackDate;
 	private JTextField textRoute;
 	private JTextField textGoDate;
-	private JButton ticketBtn;
+	private JButton confirmBtn;
 	private JLabel labelName;
 	private JLabel labelGate;
+	private JLabel adultPriceLabel;
+	private JLabel childPriceLabel;
+	private JLabel flightPriceLabel;
 	private JTextField textSeat;
+	private JSpinner spinnerAdult;
+	private JSpinner spinnerChild;
 	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					booking frame = new booking();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	//Constructor Method without parameter 
 	public booking() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ADMIN\\Downloads\\8-removebg-preview (2).png"));
@@ -131,19 +149,20 @@ public class booking extends JFrame {
 		buttonGroup_1.add(Business);
 		Business.setBackground(new Color(255, 204, 153));
 		Business.setFont(new Font("Tahoma", Font.BOLD, 11));
-		Business.setBounds(35, 277, 109, 23);
+		Business.setBounds(35, 277, 96, 23);
 		contentPane.add(Business);
 		
-		JLabel lblNewLabel_5 = new JLabel("Category");
+		JLabel lblNewLabel_5 = new JLabel("Way");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNewLabel_5.setBounds(222, 204, 72, 19);
+		lblNewLabel_5.setBounds(129, 204, 72, 19);
 		contentPane.add(lblNewLabel_5);
 		
 		JRadioButton economy = new JRadioButton("Economy");
 		buttonGroup_1.add(economy);
 		economy.setBackground(new Color(255, 204, 153));
 		economy.setFont(new Font("Tahoma", Font.BOLD, 11));
-		economy.setBounds(35, 246, 109, 31);
+		economy.setBounds(35, 246, 96, 31);
 		contentPane.add(economy);
 		
 		JLabel lblNewLabel_7 = new JLabel("-------------------------------------------------------------------------------------");
@@ -154,14 +173,14 @@ public class booking extends JFrame {
 		buttonGroup.add(oneWay);
 		oneWay.setBackground(new Color(255, 204, 153));
 		oneWay.setFont(new Font("Tahoma", Font.BOLD, 11));
-		oneWay.setBounds(154, 251, 85, 23);
+		oneWay.setBounds(132, 251, 85, 23);
 		contentPane.add(oneWay);
 		
 		JRadioButton Return = new JRadioButton("Return");
 		buttonGroup.add(Return);
 		Return.setBackground(new Color(255, 204, 153));
 		Return.setFont(new Font("Tahoma", Font.BOLD, 11));
-		Return.setBounds(154, 277, 85, 23);
+		Return.setBounds(132, 277, 85, 23);
 		contentPane.add(Return);
 		
 		JLabel lblNewLabel_8 = new JLabel("-------------------------------------------------------------------------------------");
@@ -199,6 +218,7 @@ public class booking extends JFrame {
 		totalBtn.setForeground(new Color(255, 255, 255));
 		totalBtn.setBackground(new Color(0, 0, 0));
 		totalBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
+		totalBtn.setFocusable(false);
 		totalBtn.setBounds(286, 617, 89, 23);
 		contentPane.add(totalBtn);
 		
@@ -368,14 +388,14 @@ public class booking extends JFrame {
 		textSeat = new JTextField();
 		textSeat.setHorizontalAlignment(SwingConstants.CENTER);
 		textSeat.setFont(new Font("Tahoma", Font.BOLD, 13));
-		textSeat.setBounds(488, 379, 86, 27);
+		textSeat.setBounds(405, 379, 169, 27);
 		textSeat.setEditable(false);
 		panel2.add(textSeat);
 		textSeat.setColumns(10);
 		
 		JLabel lblNewLabel_11_4_1_2_1 = new JLabel("Seat :");
 		lblNewLabel_11_4_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_11_4_1_2_1.setBounds(436, 379, 42, 27);
+		lblNewLabel_11_4_1_2_1.setBounds(362, 379, 42, 27);
 		panel2.add(lblNewLabel_11_4_1_2_1);
 		
 		JLabel lblNewLabel_12 = new JLabel("Gate :");
@@ -389,24 +409,25 @@ public class booking extends JFrame {
 		labelGate.setBounds(697, 150, 75, 14);
 		panel2.add(labelGate);
 		
-		ticketBtn = new JButton("TICKET");
-		ticketBtn.setForeground(new Color(255, 255, 255));
-		ticketBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
-		ticketBtn.setBackground(new Color(0, 0, 0));
-		ticketBtn.setBounds(1122, 613, 140, 31);
-		contentPane.add(ticketBtn);
+		confirmBtn = new JButton("CONFIRM");
+		confirmBtn.setForeground(new Color(255, 255, 255));
+		confirmBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
+		confirmBtn.setBackground(new Color(0, 0, 0));
+		confirmBtn.setFocusable(false);
+		confirmBtn.setBounds(1122, 613, 140, 31);
+		contentPane.add(confirmBtn);
 		
 		JComboBox To = new JComboBox();
 		To.setBounds(132, 361, 202, 22);
 		contentPane.add(To);
 		
-		JSpinner spinnerAdult = new JSpinner();
-		spinnerAdult.setModel(new SpinnerNumberModel(1, 1, 9, 1));
+		spinnerAdult = new JSpinner();
+		spinnerAdult.setModel(new SpinnerNumberModel(1, 1, 3, 1));
 		spinnerAdult.setBounds(316, 252, 59, 20);
 		contentPane.add(spinnerAdult);
 		
-		JSpinner spinnerChild = new JSpinner();
-		spinnerChild.setModel(new SpinnerNumberModel(0, 0, 5, 1));
+		spinnerChild = new JSpinner();
+		spinnerChild.setModel(new SpinnerNumberModel(0, 0, 2, 1));
 		spinnerChild.setBounds(316, 278, 59, 20);
 		contentPane.add(spinnerChild);
 		
@@ -420,21 +441,23 @@ public class booking extends JFrame {
 		
 		JDateChooser dateChooser_1 = new JDateChooser();
 		dateChooser_1.setBounds(132, 452, 131, 20);
+		dateChooser_1.setEnabled(false);
 		contentPane.add(dateChooser_1);
 
 		JSpinner spinnerDay = new JSpinner();
 		spinnerDay.setModel(new SpinnerNumberModel(1, 1, 9, 1));
+		spinnerDay.setEnabled(false);
 		spinnerDay.setBounds(134, 498, 59, 20);
 		contentPane.add(spinnerDay);
 		
-		JLabel lblNewLabel = new JLabel("Adult :");
+		JLabel lblNewLabel = new JLabel("Adult (13+) :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel.setBounds(260, 254, 46, 14);
+		lblNewLabel.setBounds(223, 254, 83, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblChild = new JLabel("Child :");
+		JLabel lblChild = new JLabel("Child (-12)  :");
 		lblChild.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblChild.setBounds(260, 281, 46, 14);
+		lblChild.setBounds(223, 281, 83, 14);
 		contentPane.add(lblChild);
 		
 		JLabel lblTo = new JLabel("To :");
@@ -469,8 +492,34 @@ public class booking extends JFrame {
 		
 		JLabel lblDateForBack = new JLabel("Date For Back :");
 		lblDateForBack.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblDateForBack.setEnabled(false);
 		lblDateForBack.setBounds(46, 452, 85, 20);
 		contentPane.add(lblDateForBack);
+		
+		JLabel lblNewLabel_5_1 = new JLabel("Age");
+		lblNewLabel_5_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5_1.setFont(new Font("Arial", Font.BOLD, 15));
+		lblNewLabel_5_1.setBounds(260, 204, 72, 19);
+		contentPane.add(lblNewLabel_5_1);
+		
+		JButton infoBtn = new JButton("INFO");
+		infoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(null, "PRICE : "+"\n\nAdult : RM170"+"\nChild : RM70");
+			}
+		});
+		infoBtn.setForeground(Color.WHITE);
+		infoBtn.setBackground(Color.BLACK);
+		infoBtn.setFocusable(false);
+		infoBtn.setBounds(303, 237, 85, 14);
+		contentPane.add(infoBtn);
+		
+		flightPriceLabel = new JLabel("");
+		
+		adultPriceLabel = new JLabel();
+		
+	    childPriceLabel = new JLabel();
 		
 		//========================================================================================================================= ActionListener for each Components =====================================================================================================
 		
@@ -483,6 +532,7 @@ public class booking extends JFrame {
 			}
 			
 		});
+		
 		
 		//Calculation
 		from.addActionListener(new ActionListener() { //ActionListener for From ComboBox
@@ -513,6 +563,7 @@ public class booking extends JFrame {
 					To.addItem("Jakarta,Indonesia");
 					To.addItem("Guangzhou,China");
 					
+					
 					if(oneWay.isSelected()) {
 						spinnerDay.setEnabled(false);
 						lblDateForBack.setEnabled(false);
@@ -526,14 +577,13 @@ public class booking extends JFrame {
 					
 					totalBtn.addActionListener(new ActionListener() { //ActionListener for Total Button 
 						public void actionPerformed(ActionEvent e) {
-							
 							String className = "";
-							String seat = "";
-							String gate = "";
+							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
-						
-							double tax = 0.06, totalTax;
+							double tax = 0.06 ,totalTax;
 							double price = 00.0;
 							
 							if(oneWay.isSelected()) {
@@ -548,7 +598,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 354.3 * tax;
-								price = (354.3 * day) + totalTax;
+								price = 354.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -559,19 +609,23 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;  //Calculation
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Johor Bahru")) { //Action if user select Business class and select Johor Bahru
 								
 								className = "Business";
 								
 								totalTax = 274.3 * tax;
-                                price = (274.3 * day) + totalTax;
+                                price = 274.3 + totalTax;
 								
                                 if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -581,19 +635,23 @@ public class booking extends JFrame {
 									textWay.setText("Return");
 									totalPrice = price * 2;
 								}
-    							
-    							totalCategory = num1 + num2;
-    							
-    							totalFinalOfPrice = totalPrice * totalCategory;
-    							
-    							seat = "BS17";
-								gate = "B2";
+								
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
+								
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 284 * tax;
-                                price = (284 * day)+totalTax;
+                                price = 284 +totalTax;
 								
                                 if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -603,19 +661,23 @@ public class booking extends JFrame {
 									textWay.setText("Return");
 									totalPrice = price * 2;
 								}
-    							
-    							totalCategory = num1 + num2;
-    							
-    							totalFinalOfPrice = totalPrice * totalCategory;
-    							
-    							seat = "BS17";
-								gate = "B2";
+								
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
+								
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bharu,Kelantan")) { //Action if user select Business class and select Kota Bharu,Kelantan
 								className = "Business";
 								
 								totalTax = 264.3 * tax;
-								price = (264.3 * day) + totalTax;
+								price = 264.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -626,18 +688,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 284.3 * tax;
-								price = (284.3 * day) +totalTax;
+								price = 284.3  +totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -648,18 +714,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
 								className = "Business";
 								
 								totalTax = 394.3 * tax;
-								price = (394.3 * day) + totalTax;
+								price = 394.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -670,18 +740,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Penang")) { //Action if user select Business class and select Penang
 								className = "Business";
 								
 								totalTax = 264.3 * tax;
-								price = (264.3 * day) + totalTax;
+								price = 264.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -692,18 +766,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuantan,Pahang")) { //Action if user select Business class and select Kuantan,Pahang
 								className = "Business";
 								
 								totalTax = 284 * tax;
-								price = (284 * day) + totalTax;
+								price = 284 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -714,18 +792,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
-							
-								seat = "BS17";
-								gate = "B2";
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Seoul,South Korea")) { //Action if user select Business class and select Seoul.South Korea
 								className = "Business";
 								
 								totalTax = 1557 * tax;
-								price = (1557 * day) + totalTax;
+								price = 1557 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -736,18 +818,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Singapore")) { //Action if user select Business class and select Singapore
 								className = "Business";
 								
 								totalTax = 328 * tax;
-								price = (328 * day) + totalTax;
+								price = 328 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -758,18 +844,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Tokyo,Japan")) { //Action if user select Business class and select Tokyo,Japan
 								className = "Business";
 								
 								totalTax = 1060 * tax;
-								price = (1060 * day) + totalTax;
+								price = 1060 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -780,18 +870,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Krabi,Thailand")) { //Action if user select Business class and select Krabi.Thailand
 								className = "Business";
 								
 								totalTax = 1609.1 * tax;
-								price = (1609.1 * day) + totalTax;
+								price = 1609.1 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -802,18 +896,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Bali,Indonesia")) { //Action if user select Business class and select Bali,Indonesia
 								className = "Business";
 								
 								totalTax = 760 * tax;
-								price = (760 * day) + totalTax;
+								price = 760 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -824,18 +922,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Jakarta,Indonesia")) { //Action if user select Business class and select Jakarta,Indonesia
 								className = "Business";
 								
 								totalTax = 694 * tax;
-								price = (694 * day) + totalTax;
+								price = 696 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -846,18 +948,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Guangzhou,China")) { //Action if user select Business class and select Guangzhou,China
 								className = "Business";
 								
 								totalTax = 11509 * tax;
-								price = (11509 * day) + totalTax;
+								price = 11509 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -868,12 +974,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//============================================================== economy =================================================================
@@ -881,7 +991,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 194.3 * tax;
-								price = (194.3 * day) + totalTax;
+								price = 194.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -890,21 +1000,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Johor Bahru")) { //Action if user select Economy class and select Johor Bahru
 								className = "Economy";
 								
 								totalTax = 114.3 * tax;
-                                price = (114.3 * day) + totalTax;
+                                price = 114.3 + totalTax;
 								
                                 if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -913,21 +1026,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
-    							
-    							totalCategory = num1 + num2;
-    							
-    							totalFinalOfPrice = totalPrice * totalCategory;
-    							
-    							seat = "EC25";
-								gate = "E3";
+								
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
+								
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 124 * tax;
-                                price = (124 * day)+totalTax;
+                                price = 124 +totalTax;
 								
                                 if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -936,21 +1052,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
-    							
-    							totalCategory = num1 + num2;
-    							
-    							totalFinalOfPrice = totalPrice * totalCategory;
-    							
-    							seat = "EC25";
-								gate = "E3";
+								
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
+								
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bharu,Kelantan")) { //Action if user select Economy class and select Kota Bharu,Kelantan
 								className = "Economy";
 								
 								totalTax = 104.3 * tax;
-								price = (104.3 * day) + totalTax;
+								price = 104.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -959,21 +1078,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 124.3 * tax;
-								price = (124.3 * day) +totalTax;
+								price = 124.3 +totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -982,21 +1104,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
 								className = "Economy";
 								
 								totalTax = 234.3 * tax;
-								price = (234.3 * day) + totalTax;
+								price = 234.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1005,21 +1130,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Penang")) { //Action if user select Economy class and select Penang
 								className = "Economy";
 								
 								totalTax = 104.3 * tax;
-								price = (104.3 * day) + totalTax;
+								price = 104.3 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1028,21 +1156,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuantan,Pahang")) { //Action if user select Economy class and select Kuantan,Pahang
 								className = "Economy";
 								
 								totalTax = 124 * tax;
-								price = (124 * day) + totalTax;
+								price = 124 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1051,21 +1182,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Seoul,South Korea")) { //Action if user select Economy class and select Seoul,South Korea
 								className = "Economy";
 								
 								totalTax = 1397 * tax;
-								price = (1397 * day) + totalTax;
+								price = 1397 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1074,21 +1208,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Singapore")) { //Action if user select Economy class and select Singapore
 								className = "Economy";
 								
 								totalTax = 168 * tax;
-								price = (168 * day) + totalTax;
+								price = 168  + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1097,21 +1234,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Tokyo,Japan")) { //Action if user select Economy class and select Tokyo,Japan
 								className = "Economy";
 								
 								totalTax = 900 * tax;
-								price = (900 * day) + totalTax;
+								price = 900  + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1120,21 +1260,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Krabi,Thailand")) { //Action if user select Economy class and select Krabi,Thailand
 								className = "Economy";
 								
 								totalTax = 1449.1 * tax;
-								price = (1449.1 * day) + totalTax;
+								price = 1449.1 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1143,21 +1286,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Bali,Indonesia")) { //Action if user select Economy class and select Bali,Indonesia
 								className = "Economy";
 								
 								totalTax = 600 * tax;
-								price = (600 * day) + totalTax;
+								price = 600 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1166,21 +1312,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Jakarta,Indonesia")) { //Action if user select Economy class and select Jakarta,Indonesia
 								className = "Economy";
 								
 								totalTax = 534 * tax;
-								price = (534 * day) + totalTax;
+								price = 534  + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1189,21 +1338,24 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Guangzhou,China")) { //Action if user select Economy class and select Guangzhou,China
 								className = "Economy";
 								
 								totalTax = 11349 * tax;
-								price = (11349 * day) + totalTax;
+								price = 11349 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1212,21 +1364,23 @@ public class booking extends JFrame {
 								else if(Return.isSelected()) {//Action if user select Return for the Two Way
 									textWay.setText("Return");
 									totalPrice = price * 2;
-									contentPane.add(dateChooser_1);
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -1243,20 +1397,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -1269,7 +1444,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -1277,8 +1458,6 @@ public class booking extends JFrame {
 									
 									textRoute.setText("ANY");
 								}
-						    }
-							
 						}
 					});
 				}
@@ -1309,13 +1488,13 @@ public class booking extends JFrame {
 					totalBtn.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {
-							String seat = "";
 							String className = "";
-							String gate = "";
+							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
-						
-							double tax = 0.06, totalTax;
+							double tax = 0.06 ,totalTax;
 							double price = 00.0;
 							
 							if(oneWay.isSelected()) {
@@ -1329,7 +1508,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 894.51*tax;
-								price = (894.51 * day) + totalTax;
+								price = 894.51 + totalTax;
 								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1340,18 +1519,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Business class and select Langkawi,Kedah
 								className = "Business";
 								
 								totalTax = 1236.71*tax;
-								price = (1236.71 * day) + totalTax;
+								price = 1236.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1362,18 +1545,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
                             	className = "Business";
 								
 								totalTax = 803.71*tax;
-								price = (803.71 * day) + totalTax;
+								price = 803.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1384,18 +1571,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 466.68*tax;
-								price = (466.68 * day) + totalTax;
+								price = 466.68 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1406,18 +1597,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Business class and select Kota Bahru,Kelantan
 								className = "Business";
 								
 								totalTax = 552.77 * tax;
-								price = (552.77 * day) + totalTax;
+								price = 552.77 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1428,18 +1623,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 1078.18*tax;
-								price = (1078.18 * day) + totalTax;
+								price = 1078.18 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1450,18 +1649,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
-
-								seat = "BS17";
-								gate = "B2";
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Business class and select KLIA
 								className = "Business";
 								
 								totalTax = 682.62 * tax;
-								price = (682.62 * day) + totalTax;
+								price = 682.62 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1472,12 +1675,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//========================================================== economy =============================================================================
@@ -1485,7 +1692,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 734.51*tax;
-								price = (734.51 * day) + totalTax;
+								price = 734.51 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1496,18 +1703,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) {  //Action if user select Economy class and select Langkawi,Kedah
 								className = "Economy";
 								
 								totalTax = 1076.71*tax;
-								price = (1076.71 * day) + totalTax;
+								price = 1076.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1518,18 +1729,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
                             	className = "Economy";
 								
 								totalTax = 643.71*tax;
-								price = (643.71 * day) + totalTax;
+								price = 643.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1540,18 +1755,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 306.68*tax;
-								price = (306.68 * day) + totalTax;
+								price = 306.68 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1562,18 +1781,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Economy class and select Kota Bahru,Kelantan
 								className = "Economy";
 								
 								totalTax = 392.77 * tax;
-								price = (392.77 * day) + totalTax;
+								price = 392.77 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1584,18 +1807,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 918.18*tax;
-								price = (918.18 * day) + totalTax;
+								price = 918.18 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1606,18 +1833,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Economy class and select KLIA
 								className = "Economy";
 								
 								totalTax = 522.62 * tax;
-								price = (522.62 * day) + totalTax;
+								price = 522.62 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1628,18 +1859,20 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
-							//Display error popup message if something is not selected
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -1656,20 +1889,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -1682,7 +1936,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -1690,7 +1950,6 @@ public class booking extends JFrame {
 									
 									textRoute.setText("ANY");
 								}
-						    }
 						
 						}
 						
@@ -1724,10 +1983,11 @@ public class booking extends JFrame {
 					totalBtn.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {
-							String seat = "";
 							String className = "";
-							String gate = "";
+							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 							double tax = 0.06 ,totalTax;
 							double price = 00.0;
@@ -1743,7 +2003,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 656.9*tax;
-								price = (656.9 * day) + totalTax;
+								price = 656.9 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1754,18 +2014,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Business class and select Langkawi,Kedah
 								className = "Business";
 								
 								totalTax = 1234.71*tax;
-								price = (1234.71 * day) + totalTax;
+								price = 1234.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1776,18 +2040,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
                             	className = "Business";
 								
 								totalTax = 461.71*tax;
-								price = (461.71 * day) + totalTax;
+								price = 461.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1798,18 +2066,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 645.79*tax;
-								price = (645.79 * day) + totalTax;
+								price = 645.79 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1820,18 +2092,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Business class and select Kota Bahru,Kelantan
 								className = "Business";
 								
 								totalTax = 975.58 * tax;
-								price = (975.58 * day) + totalTax;
+								price = 975.58 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1842,18 +2118,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 647*tax;
-								price = (647 * day) + totalTax;
+								price = 647 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1864,18 +2144,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Business class and select KLIA
 								className = "Business";
 								
 								totalTax = 446 * tax;
-								price = (446 * day) + totalTax;
+								price = 446 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1886,12 +2170,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
-							
-								seat = "BS17";
-								gate = "B2";
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//========================================================== economy =============================================================================
@@ -1899,7 +2187,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 496.9*tax;
-								price = (496.9 * day) + totalTax;
+								price = 496.9 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1910,18 +2198,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Economy class and select Langkawi,Kedah
 								className = "Economy";
 								
 								totalTax = 1076.71*tax;
-								price = (1076.71 * day) + totalTax;
+								price = 1076.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1932,18 +2224,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
                             	className = "Economy";
 								
 								totalTax = 301.7*tax;
-								price = (301.7 * day) + totalTax;
+								price = 301.7 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1954,18 +2250,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 485.79*tax;
-								price = (485.79 * day) + totalTax;
+								price = 485.79 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1976,18 +2276,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Economy class and select Kota Bahru,Kelantan
 								className = "Economy";
 								
 								totalTax = 815.56 * tax;
-								price = (815.56 * day) + totalTax;
+								price = 815.56 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -1998,18 +2302,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 487*tax;
-								price = (487 * day) + totalTax;
+								price = 487 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2020,18 +2328,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Economy class and select KLIA
 								className = "Economy";
 								
 								totalTax = 286 * tax;
-								price = (286 * day) + totalTax;
+								price = 286  + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2042,18 +2354,21 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -2070,20 +2385,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -2096,7 +2432,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -2104,7 +2446,6 @@ public class booking extends JFrame {
 									
 									textRoute.setText("ANY");
 								}
-						    }
 						}
 						
 					});
@@ -2138,14 +2479,14 @@ public class booking extends JFrame {
 					totalBtn.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {
-							String seat = "";
 							String className = "";
-							String gate = "";
+							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 							double tax = 0.06 ,totalTax;
 							double price = 00.0;
-							
 							
 							if(oneWay.isSelected()) {
 								spinnerDay.setValue(1);
@@ -2158,7 +2499,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 1130.32*tax;
-								price = (1130.32 * day) + totalTax;
+								price = 1130.32 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2169,18 +2510,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Business class and select Langkawi,Kedah
 								className = "Business";
 								
 								totalTax = 2190.15*tax;
-								price = (2190.15 * day) + totalTax;
+								price = 2190.15 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2191,18 +2536,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
                             	className = "Business";
 								
 								totalTax = 1548.33*tax;
-								price = (1548.33 * day) + totalTax;
+								price = 1548.33 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2213,18 +2562,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 2129.36*tax;
-								price = (2129.36 * day) + totalTax;
+								price = 2129.36 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2235,18 +2588,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Business class and select Kota Bahru,Kelantan
 								className = "Business";
 								
 								totalTax = 2080.22 * tax;
-								price = (2080.22 * day) + totalTax;
+								price = 2080.22 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2257,18 +2614,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 1301.2*tax;
-								price = (1301.2 * day) + totalTax;
+								price = 1301.2 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2279,18 +2640,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Business class and select KLIA
 								className = "Business";
 								
 								totalTax = 933.16 * tax;
-								price = (933.16 * day) + totalTax;
+								price = 933.16 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2301,12 +2666,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//========================================================== economy =============================================================================
@@ -2314,7 +2683,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 970.32*tax;
-								price = (970.32 * day) + totalTax;
+								price = 970.32 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2325,18 +2694,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Economy class and select Langkawi,Kedah
 								className = "Economy";
 								
 								totalTax = 2030.15*tax;
-								price = (2030.15 * day) + totalTax;
+								price = 2030.15 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2347,18 +2720,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
                             	className = "Economy";
 								
 								totalTax = 1388.33*tax;
-								price = (1388.33 * day) + totalTax;
+								price = 1388.33 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2369,18 +2746,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 1969.36*tax;
-								price = (1969.36 * day) + totalTax;
+								price = 1969.36 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2391,18 +2772,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Economy class and select Kota Bahru,Kelantan
 								className = "Economy";
 								
 								totalTax = 1920.22 * tax;
-								price = (1920.22 * day) + totalTax;
+								price = 1920.22 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2413,18 +2798,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 1141.2*tax;
-								price = (1141.2 * day) + totalTax;
+								price = 1141.2 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2435,18 +2824,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Economy class and select KLIA
 								className = "Economy";
 								
 								totalTax = 773.16 * tax;
-								price = (773.16 * day) + totalTax;
+								price = 773.16 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2457,18 +2850,21 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -2485,20 +2881,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -2511,7 +2928,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -2519,7 +2942,6 @@ public class booking extends JFrame {
 									
 									textRoute.setText("ANY");
 								}
-						    }
 						}
 						
 					});
@@ -2554,10 +2976,11 @@ public class booking extends JFrame {
 					totalBtn.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {
-							String seat = "";
 							String className = "";
-							String gate = "";
+							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 							double tax = 0.06 ,totalTax;
 							double price = 00.0;
@@ -2573,7 +2996,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 1155.37*tax;
-								price = (1155.37 * day) + totalTax;
+								price = 1155.37 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2584,18 +3007,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Business class and select Langkawi,Kedah
 								className = "Business";
 								
 								totalTax = 1262.73*tax;
-								price = (1262.73 * day) + totalTax;
+								price = 1262.73 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2606,18 +3033,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
                             	className = "Business";
 								
 								totalTax = 1306*tax;
-								price = (1306 * day) + totalTax;
+								price = 1306 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2628,18 +3059,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 2447.06*tax;
-								price = (2447.06 * day) + totalTax;
+								price = 2447.06 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2650,18 +3085,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Business class and select Kota Bahru,Kelantan
 								className = "Business";
 								
 								totalTax = 1106.36 * tax;
-								price = (1106.36 * day) + totalTax;
+								price = 1106.36 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2672,18 +3111,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 1155.34*tax;
-								price = (1155.34 * day) + totalTax;
+								price = 1155.34 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2694,18 +3137,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Business class and select KLIA
 								className = "Business";
 								
 								totalTax = 935.59 * tax;
-								price = (935.59 * day) + totalTax;
+								price = 935.59 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2716,12 +3163,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//========================================================== economy =============================================================================
@@ -2729,7 +3180,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 995.37*tax;
-								price = (995.37 * day) + totalTax;
+								price = 995.37 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2740,18 +3191,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Economy class and select Langkawi,Kedah
 								className = "Economy";
 								
 								totalTax = 1102.73*tax;
-								price = (1102.73 * day) + totalTax;
+								price = 1102.73 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2762,18 +3217,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
                             	className = "Economy";
 								
 								totalTax = 1146*tax;
-								price = (1146 * day) + totalTax;
+								price = 1146 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2784,18 +3243,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 2287.06*tax;
-								price = (2287.06 * day) + totalTax;
+								price = 2287.06 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2806,18 +3269,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Economy class and select Kota Bahru,Kelantan
 								className = "Economy";
 								
 								totalTax = 946.36 * tax;
-								price = (946.36 * day) + totalTax;
+								price = 946.36 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2828,18 +3295,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 995.34*tax;
-								price = (995.34 * day) + totalTax;
+								price = 995.34 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2850,18 +3321,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Economy class and select KLIA
 								className = "Economy";
 								
 								totalTax = 775.59 * tax;
-								price = (775.59 * day) + totalTax;
+								price = 775.59 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2872,18 +3347,21 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -2900,20 +3378,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -2926,7 +3425,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -2934,7 +3439,6 @@ public class booking extends JFrame {
 									
 									textRoute.setText("ANY");
 								}
-						    }
 						}
 						
 					});
@@ -2968,10 +3472,11 @@ public class booking extends JFrame {
 					totalBtn.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {
-							String seat = "";
 							String className = "";
-							String gate = "";
+							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 							double tax = 0.06 ,totalTax;
 							double price = 00.0;
@@ -2987,7 +3492,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 894.51*tax;
-								price = (894.51 * day) + totalTax;
+								price = 894.51 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -2998,18 +3503,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Business class and select Langkawi,Kedah
 								className = "Business";
 								
 								totalTax = 1236.71*tax;
-								price = (1236.71 * day) + totalTax;
+								price = 1236.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3020,18 +3529,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
                             	className = "Business";
 								
 								totalTax = 803.71*tax;
-								price = (803.71 * day) + totalTax;
+								price = 803.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3042,18 +3555,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 466.68*tax;
-								price = (466.68 * day) + totalTax;
+								price = 466.68 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3064,18 +3581,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Business class and select Kota Bahru,Kelantan
 								className = "Business";
 								
 								totalTax = 552.77 * tax;
-								price = (552.77 * day) + totalTax;
+								price = 552.77 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3086,18 +3607,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 1078.18*tax;
-								price = (1078.18 * day) + totalTax;
+								price = 1078.18 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3108,18 +3633,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Business class and select KLIA
 								className = "Business";
 								
 								totalTax = 682.62 * tax;
-								price = (682.62 * day) + totalTax;
+								price = 682.62 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3130,12 +3659,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//========================================================== economy =============================================================================
@@ -3143,7 +3676,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 867.6*tax;
-								price = (867.6 * day) + totalTax;
+								price = 867.6 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3154,18 +3687,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Economy class and select Langkawi,Kedah
 								className = "Economy";
 								
 								totalTax = 896.91*tax;
-								price = (896.91 * day) + totalTax;
+								price = 896.91 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3176,18 +3713,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
                             	className = "Economy";
 								
 								totalTax = 1014.32*tax;
-								price = (1014.32 * day) + totalTax;
+								price = 1014.32 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3198,18 +3739,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 867.6*tax;
-								price = (867.6 * day) + totalTax;
+								price = 867.6 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3220,18 +3765,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Economy class and select Kota Bahru,Kelantan
 								className = "Economy";
 								
 								totalTax = 887.15 * tax;
-								price = (887.15 * day) + totalTax;
+								price = 887.15 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3242,18 +3791,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 936.13*tax;
-								price = (936.13 * day) + totalTax;
+								price = 936.13 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3264,18 +3817,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Economy class and select KLIA
 								className = "Economy";
 								
 								totalTax = 718.38 * tax;
-								price = (718.38 * day) + totalTax;
+								price = 718.38 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3286,17 +3843,20 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -3313,20 +3873,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -3339,7 +3920,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -3347,7 +3934,6 @@ public class booking extends JFrame {
 									
 									textRoute.setText("ANY");
 								}
-						    }
 						}
 						
 					});
@@ -3381,12 +3967,11 @@ public class booking extends JFrame {
 					totalBtn.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {
-							
 							String className = "";
-							String seat = "";
-							String gate = "";
-							
+							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 							double tax = 0.06 ,totalTax;
 							double price = 00.0;
@@ -3402,7 +3987,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 894.51*tax;
-								price = (894.51 * day) + totalTax;
+								price = 894.51 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3413,18 +3998,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Business class and select Langkawi,Kedah
 								className = "Business";
 								
 								totalTax = 1236.71*tax;
-								price = (1236.71 * day) + totalTax;
+								price = 1236.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3435,18 +4024,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
                             	className = "Business";
 								
 								totalTax = 803.71*tax;
-								price = (803.71 * day) + totalTax;
+								price = 803.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3457,18 +4050,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
-
-								seat = "BS17";
-								gate = "B2";
+								totalCategory = adultPrice + childPrice;
+								
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 466.68*tax;
-								price = (466.68 * day) + totalTax;
+								price = 466.68 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3479,18 +4076,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Business class and select Kota Bahru,Kelantan
 								className = "Business";
 								
 								totalTax = 552.77 * tax;
-								price = (552.77 * day) + totalTax;
+								price = 552.77 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3501,18 +4102,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 1078.18*tax;
-								price = (1078.18 * day) + totalTax;
+								price = 1078.18 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3523,18 +4128,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Business class and select KLIA
 								className = "Business";
 								
 								totalTax = 682.62 * tax;
-								price = (682.62 * day) + totalTax;
+								price = 682.62 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3545,12 +4154,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//========================================================== economy =============================================================================
@@ -3558,7 +4171,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 4876.64*tax;
-								price = (4876.64 * day) + totalTax;
+								price = 4876.64 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3569,18 +4182,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Economy class and select Langkawi,Kedah
 								className = "Economy";
 								
 								totalTax = 1827.98*tax;
-								price = (1827.98 * day) + totalTax;
+								price = 1827.98 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3591,18 +4208,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
                             	className = "Economy";
 								
 								totalTax = 1568.77*tax;
-								price = (1568.77 * day) + totalTax;
+								price = 1568.77 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3613,18 +4234,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 2625.07*tax;
-								price = (2625.07 * day) + totalTax;
+								price = 2625.07 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3635,18 +4260,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Economy class and select Kota Bahru,Kelantan
 								className = "Economy";
 								
 								totalTax = 2981.10 * tax;
-								price = (2981.10 * day) + totalTax;
+								price = 2981.10 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3657,18 +4286,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 4910.05*tax;
-								price = (4910.05 * day) + totalTax;
+								price = 4910.05 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3679,18 +4312,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Economy class and select KLIA
 								className = "Economy";
 								
 								totalTax = 3841.95 * tax;
-								price = (3841.95 * day) + totalTax;
+								price = 3841.95 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3701,17 +4338,20 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -3728,20 +4368,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -3754,7 +4415,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -3762,7 +4429,6 @@ public class booking extends JFrame {
 									
 									textRoute.setText("ANY");
 								}
-						    }
 						}
 						
 					});
@@ -3797,10 +4463,11 @@ public class booking extends JFrame {
 					totalBtn.addActionListener(new ActionListener() {
 
 						public void actionPerformed(ActionEvent e) {
-							String seat = "";
 							String className = "";
 							String gate ="";
 							int totalCategory = 0;
+							int adultPrice = 0;
+							int childPrice = 0;
 							double totalPrice = 0.00 , totalFinalOfPrice = 0.00;
 							double tax = 0.06 ,totalTax;
 							double price = 00.0;
@@ -3816,7 +4483,7 @@ public class booking extends JFrame {
 								className = "Business";
 								
 								totalTax = 894.51*tax;
-								price = (894.51 * day) + totalTax;
+								price = 894.51  + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3827,19 +4494,23 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 								
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Business class and select Langkawi,Kedah
 								className = "Business";
 								
 								totalTax = 1236.71*tax;
-								price = (1236.71 * day) + totalTax;
+								price = 1236.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3850,18 +4521,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(Business.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Business class and select Kota Kinabalu,Sabah
                             	className = "Business";
 								
 								totalTax = 803.71*tax;
-								price = (803.71 * day) + totalTax;
+								price = 803.71  + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3872,18 +4547,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Business class and select Terengganu
 								className = "Business";
 								
 								totalTax = 466.68*tax;
-								price = (466.68 * day) + totalTax;
+								price = 466.68  + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3894,18 +4573,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Business class and select Kota Bahru,Kelantan
 								className = "Business";
 								
 								totalTax = 552.77 * tax;
-								price = (552.77 * day) + totalTax;
+								price = 552.77 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3916,18 +4599,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Business class and select Kuching,Sarawak
 								className = "Business";
 								
 								totalTax = 1078.18*tax;
-								price = (1078.18 * day) + totalTax;
+								price = 1078.18 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3938,18 +4625,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(Business.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Business class and select KLIA
 								className = "Business";
 								
 								totalTax = 682.62 * tax;
-								price = (682.62 * day) + totalTax;
+								price = 682.62 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3960,12 +4651,16 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "BS17";
-								gate = "B2";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							
 							//========================================================== economy / adult / oneWay =============================================================================
@@ -3973,7 +4668,7 @@ public class booking extends JFrame {
 								className = "Economy";
 								
 								totalTax = 734.51*tax;
-								price = (734.51 * day) + totalTax;
+								price = 734.51 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -3984,18 +4679,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Langkawi,Kedah")) { //Action if user select Economy class and select Langkawi,Kedah
 								className = "Economy";
 								
 								totalTax = 1076.71*tax;
-								price = (1076.71 * day) + totalTax;
+								price = 1076.71 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -4006,18 +4705,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
                             else if(economy.isSelected() && To.getSelectedItem().equals("Kota Kinabalu,Sabah")) { //Action if user select Economy class and select Kota Kinabalu,Sabah
                             	className = "Economy";
 								
 								totalTax = 643.71*tax;
-								price = (643.71 * day) + totalTax;
+								price = 643.71  + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -4028,19 +4731,23 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Terengganu")) { //Action if user select Economy class and select Terengganu
 								className = "Economy";
 								
 								totalTax = 306.68*tax;
-								price = (306.68 * day) + totalTax;
-									
+								price = 306.68  + totalTax;
+								
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
 									totalPrice = price;
@@ -4050,18 +4757,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kota Bahru,Kelantan")) { //Action if user select Economy class and select Kota Bahru,Kelantan
 								className = "Economy";
 								
 								totalTax = 392.77 * tax;
-								price = (392.77 * day) + totalTax;
+								price = 392.77  + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -4072,18 +4783,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("Kuching,Sarawak")) { //Action if user select Economy class and select Kuching,Sarawak
 								className = "Economy";
 								
 								totalTax = 918.18*tax;
-								price = (918.18 * day) + totalTax;
+								price = 918.18 + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -4094,18 +4809,22 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
 							}
 							else if(economy.isSelected() && To.getSelectedItem().equals("KLIA")) { //Action if user select Economy class and select KLIA
 								className = "Economy";
 								
 								totalTax = 522.62 * tax;
-								price = (522.62 * day) + totalTax;
+								price = 522.62  + totalTax;
 									
 								if(oneWay.isSelected()) {//Action if user select one Way for the single way
 									textWay.setText("One Way");
@@ -4116,17 +4835,21 @@ public class booking extends JFrame {
 									totalPrice = price * 2;
 								}
 								
-								totalCategory = num1 + num2;
+								adultPrice = 160 * num1;
+								childPrice = 70 * num2;
 								
-								totalFinalOfPrice = totalPrice * totalCategory;
+								totalCategory = adultPrice + childPrice;
 								
-								seat = "EC25";
-								gate = "E3";
+								totalFinalOfPrice = totalPrice + totalCategory;
+								
+								flightPriceLabel.setText(""+price);
+								adultPriceLabel.setText(""+adultPrice);
+								childPriceLabel.setText(""+childPrice);
+								
 							}
 							
 							if(from.getSelectedItem().equals("Destination")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you come from");
-								
 							}
 							if(To.getSelectedItem().equals("")) {
 								JOptionPane.showMessageDialog(null, "You do not select the destination you want to go");
@@ -4143,20 +4866,41 @@ public class booking extends JFrame {
 						    if(timePicker.getTime()==null) {
 						    	JOptionPane.showMessageDialog(null, "You do not select the time when you want to go");
 						    }
-						    if(dateChooser_1.isEnabled()==true) {
-								if(dateChooser_1.getDate()==null) {
-									JOptionPane.showMessageDialog(null, "You do not select date for you back to Malaysia");
-								}
-								else {
+						    else {
 									//================================================================================== Gate ================================================================================================
-		                            labelGate.setText(gate);
+		                            
+						    	if(Business.isSelected()==true) {
+						    		gate = "B2";
+						    	}
+						    	else if(economy.isSelected()==true) {
+						    		gate = "C2";
+						    	}
+						    	
+						    	labelGate.setText(gate);
 									//================================================================================== Seat ================================================================================================
-									textSeat.setText(seat);
+		                            String Seat = "";
+		                            
+		                            if(Business.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("B0" + i + ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
+		                            else if(economy.isSelected()==true) {
+		                            	 for(int i = 0; i <= (num1+num2); i++) {
+				                            	
+				                            	Seat += ("E" + (20 +i)+ ", ");
+				                            	
+				                            	textSeat.setText(""+Seat);
+											}
+		                            }
 									//================================================================================== Class Name ===========================================================================================
 									textClass.setText(className);
 									//================================================================================== Price ===============================================================================================
 									textPrice.setText("RM"+format.format(totalFinalOfPrice));
-									totalField.setText("RM"+ format.format(totalFinalOfPrice));
+									totalField.setText(""+ format.format(totalFinalOfPrice));
 									//================================================================================== Calendar =================================================================================================================
 									Calendar timer = Calendar.getInstance();
 									timer.getTime();
@@ -4169,7 +4913,13 @@ public class booking extends JFrame {
 									textFrom.setText("" + from.getSelectedItem());
 									textTo.setText( "" + To.getSelectedItem());
 									textGoDate.setText(Tdate.format(dateChooser.getDate()));
-									textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									
+									if(dateChooser_1.isEnabled()==false) {
+										textBackDate.setText("NULL");
+									}
+									if(dateChooser_1.isEnabled()==true) {
+										textBackDate.setText(Tdate.format(dateChooser_1.getDate()));
+									}
 									//================================================================================== Random number =================================================================================================================
 									int random;
 									random = 24 + (int) (Math.random());
@@ -4180,7 +4930,7 @@ public class booking extends JFrame {
 							
 								
 							}
-						}
+						
 						
 					});
 					
@@ -4238,28 +4988,41 @@ public class booking extends JFrame {
 		labelName.setText(name);
 		
 		//ActionListener for Ticket Button
-		ticketBtn.addActionListener(new ActionListener() {
+		confirmBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int adult = (int) spinnerAdult.getValue();
+				int child = (int) spinnerChild.getValue();
 				
-				//Display ticket frame
-				ticket display = new ticket();
-				display.setVisible(true);
-				display.setLocationRelativeTo(null);
-				dispose();
 				
-				//Declaration all attributes for ticket frame
-				String name = labelName.getText();
-			    String Time = textTime.getText();
-				String gate = labelGate.getText();
-				String ticketID = textTicketID.getText();
-				String flight = "TGG321";
-				String From = textFrom.getText();
-				String to = textTo.getText();
-				String seat = textSeat.getText();
-				String className = textClass.getText();
+					
+					//Display ticket frame
+					ticket display = new ticket();
+					display.setVisible(true);
+					display.setLocationRelativeTo(null);
+					dispose();
+					
+					
+					//Declaration all attributes for ticket frame
+					String name = labelName.getText();
+				    String Time = textTime.getText();
+					String gate = labelGate.getText();
+					String ticketID = textTicketID.getText();
+					String flight = "TGG321";
+					String From = textFrom.getText();
+					String to = textTo.getText();
+					String seat = textSeat.getText();
+					String className = textClass.getText();
+					double price = Double.parseDouble(totalField.getText());
+					double flightPrice = Double.parseDouble(flightPriceLabel.getText());
+					int adultPrice = Integer.parseInt(adultPriceLabel.getText());
+					int childPrice = Integer.parseInt(childPriceLabel.getText());
+					int adultQuantity = adult;
+					int childQuantity = child;
+					
+					
+					//Input data for ticket frame
+					display.display_ticket(name,gate,seat,Time,flight,From,to,className,ticketID,price,flightPrice,adultPrice,childPrice,adultQuantity,childQuantity);
 				
-				//Input data for ticket frame
-				display.display_ticket(name,gate,seat,Time,flight,From,to,className,ticketID);
 				
 				}
 		});
