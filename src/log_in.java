@@ -162,7 +162,9 @@ public class log_in extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-					if(UsernameField.getText().equals(userName) && passwordField.getText().equals(password) ) {
+					if(UsernameField.getText().equalsIgnoreCase(userName) && passwordField.getText().equalsIgnoreCase(password) ) {
+						
+						JOptionPane.showMessageDialog(null,"You have Login with our Systems");
 						
 						//display booking frame
 						booking bk = new booking();
@@ -179,7 +181,7 @@ public class log_in extends JFrame {
 					else {
 						
 						//Popup message for uncorrect input data
-						JOptionPane.showMessageDialog(null, "Please insert the correct username and password");
+						JOptionPane.showMessageDialog(null,"Please insert the correct username and password" ,"", JOptionPane.ERROR_MESSAGE);
 					}
 			}
 		});
